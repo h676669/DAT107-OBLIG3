@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="eclipselink-4.0.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../dat107-v2024/F3_Eksempel3_OneToMany_Vitnemal_skeleton/lib/eclipselink-4.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../dat107-v2024/F3_Eksempel3_OneToMany_Vitnemal_skeleton/lib/jakarta.persistence-api-3.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../dat107-v2024/F3_Eksempel3_OneToMany_Vitnemal_skeleton/lib/postgresql-42.7.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
