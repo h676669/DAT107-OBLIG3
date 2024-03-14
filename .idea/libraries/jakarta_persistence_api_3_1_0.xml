@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jakarta.persistence-api-3.1.0">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../dat107-v2024/F3_Eksempel3_OneToMany_Vitnemal_skeleton/lib/jakarta.persistence-api-3.1.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

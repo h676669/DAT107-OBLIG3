@@ -17,8 +17,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="eclipselink-4.0.2" level="project" />
-    <orderEntry type="library" name="jakarta.persistence-api-3.1.0" level="project" />
-    <orderEntry type="library" name="postgresql-42.7.2" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
