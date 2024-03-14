@@ -15,8 +15,11 @@ create Table Ansatt
 INSERT INTO
     Ansatt(brukernavn,fornavn,etternavn,ansettelsesdato,stilling,manedslonn)
     VALUES
-    ('evs','Edvard','Steenslid',2012-08-24,'Programmeringsmyrder',4206969.69
-    );
+    ('evs','Edvard','Vindenes Steenslid','2012-08-24','Programmeringsmyrder',4206969.69),
+('omgp','Ole Mathis Gudmund','Persen','2019-06-13','Nordlending',2697340.53),
+('lcs','Lars-Christian','Selland','2001-03-01','Kodeoptimaliserer',360442.67),
+ ('mk','Morten','kvamme','2024-02-29','CEO',3256400.10
+);
 SELECT * FROM Ansatt;
 
 
