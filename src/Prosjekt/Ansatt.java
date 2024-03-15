@@ -2,9 +2,10 @@ package Prosjekt;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
+@Table(schema = "Ansatt")
 public class Ansatt {
 
     @Id
@@ -15,7 +16,7 @@ public class Ansatt {
     private String brukernavn, fornavn, etternavn, stilling;
 
     @Temporal(TemporalType.DATE)
-    private Date ansettelsesDato; //?
+    private LocalDate ansettelsesDato; //?
     private double manedslonn;
-    
+
 }
