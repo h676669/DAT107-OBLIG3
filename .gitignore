@@ -31,3 +31,4 @@ bin/
 *.meta
 .idea/dataSources
 .idea
+.idea/dataSources/
