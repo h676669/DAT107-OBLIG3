@@ -2,7 +2,7 @@ DROP SCHEMA IF EXISTS Dat107Oblig3 CASCADE;
 CREATE SCHEMA Dat107Oblig3;
 SET search_path TO Dat107Oblig3;
 
-create TABLE Ansatt
+CREATE TABLE Ansatt
 (
     ansatt_id       SERIAL PRIMARY KEY,
     brukernavn      VARCHAR(4) UNIQUE NOT NULL,
@@ -11,14 +11,19 @@ create TABLE Ansatt
     ansettelsesdato DATE              NOT NULL,
     stilling        TEXT      NOT NULL,
     manedslonn      NUMERIC(10, 2)    NOT NULL,
-    avdeling_id     INT               NOT NULL
+    avdeling_id     INT               NOT NULL,
+    CONSTRAINT fk_avdeling
+        FOREIGN KEY(avdeling_id)
+            REFERENCES Avdeling(avdeling_id)
+            ON DELETE RESTRICT/*Hindrer sletting av avdeling om det finnes en ansatt der*/
 );
 CREATE TABLE Avdeling
 (
     avdeling_id   SERIAL PRIMARY KEY,
     avdelingsnavn TEXT  NOT NULL,
     le_boss_id    INT          NOT NULL,
-    FOREIGN KEY (le_boss_id) REFERENCES Ansatt(ansatt_id)
+        FOREIGN KEY (le_boss_id)
+            REFERENCES Ansatt(ansatt_id)
 );
 INSERT INTO
     Ansatt(brukernavn,fornavn,etternavn,ansettelsesdato,stilling,manedslonn,avdeling_id)
