@@ -26,8 +26,10 @@ public class Ansatt {
     private Prosjekt prosjekt;
 
     public String getFornavn() {
+        return fornavn;
     }
 
     public String getEtternavn() {
+        return etternavn;
     }
 }
