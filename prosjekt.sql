@@ -29,6 +29,18 @@ CREATE TABLE Avdeling
 
      */
 );
+ALTER TABLE Ansatt
+    ADD CONSTRAINT fk_ansatt_leboss
+        FOREIGN KEY (ansatt_id)
+            REFERENCES Avdeling (le_boss_id)
+            ON DELETE RESTRICT;/*Hindrer sletting av ansatt som er en sjef*/
+CREATE TABLE Prosjekt
+(
+    prosjekt_id          SERIAL PRIMARY KEY,
+    prosjekt_navn        TEXT NOT NULL,
+    prosjekt_beskrivelse TEXT NOT NULL,
+    prosjekt_ansatt      TEXT NOT NULL
+);
 INSERT INTO Ansatt(brukernavn, fornavn, etternavn, ansettelsesdato, stilling, manedslonn, avdeling_id)
 VALUES ('evs', 'Edvard', 'Vindenes Steenslid', '2012-08-24', 'Programmeringsmyrder', 4206969.69, 1),
        ('omgp', 'Ole Mathis Gudmund', 'Persen', '2019-06-13', 'Nordlending', 2697340.53, 1),
@@ -43,14 +55,9 @@ VALUES ('BERGEN', 1),
 SELECT *
 FROM Ansatt;
 
-CREATE TABLE Prosjekt
-(
-    prosjekt_id          SERIAL PRIMARY KEY,
-    prosjekt_navn        TEXT NOT NULL,
-    prosjekt_beskrivelse TEXT NOT NULL,
-    prosjekt_ansatt      TEXT NOT NULL
-)
-
-ALTER TABLE Avdeling ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_navn) REFERENCES Ansatt(fornavn);
-ALTER TABLE Avdeling ADD CONSTRAINT Avdeling_fk2 FOREIGN KEY (le_boss_id) REFERENCES Ansatt(ansatt_id);
-ALTER TABLE Prosjekt ADD CONSTRAINT Prosjekt_fk3 FOREIGN KEY (prosjekt_ansatt) REFERENCES Ansatt(ansatt_id);
+ALTER TABLE Avdeling
+    ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_navn) REFERENCES Ansatt (fornavn);
+ALTER TABLE Avdeling
+    ADD CONSTRAINT Avdeling_fk2 FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id);
+ALTER TABLE Prosjekt
+    ADD CONSTRAINT Prosjekt_fk3 FOREIGN KEY (prosjekt_ansatt) REFERENCES Ansatt (ansatt_id);
