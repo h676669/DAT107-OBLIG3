@@ -17,8 +17,8 @@ CREATE TABLE Avdeling
 (
     avdeling_id   SERIAL PRIMARY KEY,
     avdeling_navn TEXT NOT NULL,
-    avdeling_ansatt INT NOT NULL,
-    le_boss_id    INT  NOT NULL
+    avdeling_ansatt INT,
+    le_boss_id    INT  
 );
 
 CREATE TABLE Prosjekt
