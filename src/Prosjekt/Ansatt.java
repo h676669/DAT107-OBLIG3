@@ -24,4 +24,10 @@ public class Ansatt {
     @ManyToOne
     @JoinColumn(name = "ansattID")
     private Prosjekt prosjekt;
+
+    public String getFornavn() {
+    }
+
+    public String getEtternavn() {
+    }
 }
