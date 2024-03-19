@@ -2,6 +2,8 @@ package Prosjekt;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(schema = "Dat107Oblig3")
 public class Prosjekt {
@@ -13,4 +15,9 @@ public class Prosjekt {
     private String p_navn, p_beskrivelse;
 
     //her skal det være for ting for ansatte i prosjektet
+    @OneToMany (mappedBy ="prosjekt",fetch = FetchType.EAGER)
+    private List<Ansatt> ListeAnsatt;
+    public void leggTilAnsatt(Ansatt ny){
+        ListeAnsatt.add(ny);
+    }
 }

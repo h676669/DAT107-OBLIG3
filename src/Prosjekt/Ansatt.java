@@ -21,4 +21,7 @@ public class Ansatt {
     private LocalDate ansettelsesDato; //?
     private double manedslonn;
 
+    @ManyToOne
+    @JoinColumn(name = "ansattID")
+    private Prosjekt prosjekt;
 }
