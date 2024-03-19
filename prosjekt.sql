@@ -46,3 +46,7 @@ CREATE TABLE Prosjekt
     prosjekt_ansatt      TEXT NOT NULL,
     FOREIGN KEY (prosjekt_ansatt) REFERENCES Ansatt (ansatt_id)
 )
+
+ALTER TABLE "Avdeling" ADD CONSTRAINT "Avdeling_fk1" FOREIGN KEY ("navn") REFERENCES "Ansatt"("fornavn");
+ALTER TABLE "Avdeling" ADD CONSTRAINT "Avdeling_fk2" FOREIGN KEY ("sjef") REFERENCES "Ansatt"("ansatt_id");
+ALTER TABLE "Prosjekt" ADD CONSTRAINT "Prosjekt_fk3" FOREIGN KEY ("ansatt") REFERENCES "Ansatt"("ansatt_id");
