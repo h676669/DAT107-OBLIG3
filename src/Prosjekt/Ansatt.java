@@ -22,7 +22,7 @@ public class Ansatt {
     private double manedslonn;
 
     @ManyToOne
-    @JoinColumn(name = "ansattID")
+    @JoinColumn(name = "prosjekt_id")
     private Prosjekt prosjekt;
 
     public String getFornavn() {
@@ -31,5 +31,19 @@ public class Ansatt {
 
     public String getEtternavn() {
         return etternavn;
+    }
+    public Ansatt(){
+
+    }
+    public Ansatt(Prosjekt prosjekt, String brukernavn, String fornavn,
+                  String etternavn, String stilling, LocalDate ansettelsesDato,
+                  Double manedslonn) {
+        this.prosjekt = prosjekt;
+        this.etternavn = etternavn;
+        this.fornavn = fornavn;
+        this.brukernavn = brukernavn;
+        this.stilling = stilling;
+        this.ansettelsesDato = ansettelsesDato;
+        this.manedslonn = manedslonn;
     }
 }
