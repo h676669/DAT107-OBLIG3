@@ -31,7 +31,7 @@ CREATE TABLE Prosjekt
     prosjekt_rolle       TEXT NOT NULL,
     prosjekt_timetall    INT NOT NULL
 );
-
+ALTER TABLE Avdeling ADD CONSTRAINT fk_avdeling FOREIGN KEY(avdeling_id) REFERENCES Avdeling(avdeling_id) ON DELETE RESTRICT;
 ALTER TABLE Avdeling ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_ansatt) REFERENCES Ansatt (ansatt_id);
 ALTER TABLE Avdeling ADD CONSTRAINT Avdeling_fk2 FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id);
 ALTER TABLE Prosjekt ADD CONSTRAINT Prosjekt_fk3 FOREIGN KEY (prosjekt_ansatt) REFERENCES Ansatt (ansatt_id);
