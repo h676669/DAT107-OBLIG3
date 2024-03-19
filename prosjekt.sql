@@ -12,28 +12,15 @@ CREATE TABLE Ansatt
     stilling        TEXT              NOT NULL,
     manedslonn      NUMERIC(10, 2)    NOT NULL,
     avdeling_id     INT               NOT NULL
-    /*  CONSTRAINT fk_avdeling
-          FOREIGN KEY (avdeling_id)
-              REFERENCES Avdeling (avdeling_id)
-              ON DELETE RESTRICT/*Hindrer sletting av avdeling om det finnes en ansatt der*/
-
-          */
 );
 CREATE TABLE Avdeling
 (
     avdeling_id   SERIAL PRIMARY KEY,
     avdeling_navn TEXT NOT NULL,
+    avdeling_ansatt INT NOT NULL,
     le_boss_id    INT  NOT NULL
-    /*
-    FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id)
-
-     */
 );
-ALTER TABLE Ansatt
-    ADD CONSTRAINT fk_ansatt_leboss
-        FOREIGN KEY (ansatt_id)
-            REFERENCES Avdeling (le_boss_id)
-            ON DELETE RESTRICT;/*Hindrer sletting av ansatt som er en sjef*/
+
 CREATE TABLE Prosjekt
 (
     prosjekt_id          SERIAL PRIMARY KEY,
@@ -56,7 +43,7 @@ SELECT *
 FROM Ansatt;
 
 ALTER TABLE Avdeling
-    ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_navn) REFERENCES Ansatt (fornavn);
+    ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_ansatt) REFERENCES Ansatt (ansatt_id);
 ALTER TABLE Avdeling
     ADD CONSTRAINT Avdeling_fk2 FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id);
 ALTER TABLE Prosjekt
