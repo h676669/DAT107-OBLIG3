@@ -9,7 +9,7 @@ public class AnsattDAO {
     private EntityManagerFactory emf;
 
     public AnsattDAO() {
-        emf = Persistence.createEntityManagerFactory("AnsattPU");
+        emf = Persistence.createEntityManagerFactory("Ansatt");
     }
 
     public Ansatt finnAnsattMedId(int id) {
