@@ -15,9 +15,10 @@ public class Prosjekt {
     private String p_navn, p_beskrivelse;
 
     //her skal det være for ting for ansatte i prosjektet
-    @OneToMany (mappedBy ="prosjekt",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "prosjekt", fetch = FetchType.EAGER)
     private List<Ansatt> ListeAnsatt;
-    public void leggTilAnsatt(Ansatt ny){
+
+    public void leggTilAnsatt(Ansatt ny) {
         ListeAnsatt.add(ny);
     }
 }
