@@ -11,18 +11,23 @@ CREATE TABLE Ansatt
     ansettelsesdato DATE              NOT NULL,
     stilling        TEXT              NOT NULL,
     manedslonn      NUMERIC(10, 2)    NOT NULL,
-    avdeling_id     INT               NOT NULL,
-    CONSTRAINT fk_avdeling
-        FOREIGN KEY (avdeling_id)
-            REFERENCES Avdeling (avdeling_id)
-            ON DELETE RESTRICT/*Hindrer sletting av avdeling om det finnes en ansatt der*/
+    avdeling_id     INT               NOT NULL
+    /*  CONSTRAINT fk_avdeling
+          FOREIGN KEY (avdeling_id)
+              REFERENCES Avdeling (avdeling_id)
+              ON DELETE RESTRICT/*Hindrer sletting av avdeling om det finnes en ansatt der*/
+
+          */
 );
 CREATE TABLE Avdeling
 (
     avdeling_id   SERIAL PRIMARY KEY,
     avdeling_navn TEXT NOT NULL,
-    le_boss_id    INT  NOT NULL,
+    le_boss_id    INT  NOT NULL
+    /*
     FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id)
+
+     */
 );
 INSERT INTO Ansatt(brukernavn, fornavn, etternavn, ansettelsesdato, stilling, manedslonn, avdeling_id)
 VALUES ('evs', 'Edvard', 'Vindenes Steenslid', '2012-08-24', 'Programmeringsmyrder', 4206969.69, 1),
@@ -43,8 +48,7 @@ CREATE TABLE Prosjekt
     prosjekt_id          SERIAL PRIMARY KEY,
     prosjekt_navn        TEXT NOT NULL,
     prosjekt_beskrivelse TEXT NOT NULL,
-    prosjekt_ansatt      TEXT NOT NULL,
-    FOREIGN KEY (prosjekt_ansatt) REFERENCES Ansatt (ansatt_id)
+    prosjekt_ansatt      TEXT NOT NULL
 )
 
 ALTER TABLE "Avdeling" ADD CONSTRAINT "Avdeling_fk1" FOREIGN KEY ("navn") REFERENCES "Ansatt"("fornavn");
