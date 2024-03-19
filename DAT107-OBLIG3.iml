@@ -5,6 +5,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="Ansatt" value="90276776-a5b9-4949-941d-15f287524a0f" />
           <factory-entry name="vitnemalPU" />
         </datasource-mapping>
         <naming-strategy-map />
