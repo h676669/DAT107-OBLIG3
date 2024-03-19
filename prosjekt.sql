@@ -32,8 +32,9 @@ VALUES ('evs', 'Edvard', 'Vindenes Steenslid', '2012-08-24', 'Programmeringsmyrd
 
 
 INSERT INTO Avdeling(avdeling_navn, le_boss_id)
-VALUES ('Nord-Norge', 2);
-
+VALUES ('BERGEN', 1),
+       ('Nord-Norge', 2),
+       ('Rogaland', 3);
 SELECT *
 FROM Ansatt;
 
