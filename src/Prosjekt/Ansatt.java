@@ -22,7 +22,7 @@ public class Ansatt {
     private double manedslonn;
 
     @ManyToOne
-    @JoinColumn(name = "p_id")
+    @JoinColumn(name = "prosjekt_id")
     private Prosjekt prosjekt;
 
     public String getFornavn() {
