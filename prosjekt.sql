@@ -17,20 +17,20 @@ CREATE TABLE Ansatt
 
 CREATE TABLE Avdeling
 (
-    avdeling_id   SERIAL PRIMARY KEY,
-    avdeling_navn TEXT NOT NULL,
-    avdeling_ansatt INT,
-    le_boss_id    INT NOT NULL
+    avdeling_id          SERIAL PRIMARY KEY,
+    avdeling_navn        TEXT         NOT NULL,
+    avdeling_ansatt      INT,
+    le_boss_id           INT          NOT NULL
 );
 
 CREATE TABLE Prosjekt
 (
     prosjekt_id          SERIAL PRIMARY KEY,
-    prosjekt_navn        TEXT NOT NULL,
-    prosjekt_beskrivelse TEXT NOT NULL,
-    prosjekt_ansatt      INT NOT NULL,
-    prosjekt_rolle       TEXT NOT NULL,
-    prosjekt_timetall    INT NOT NULL
+    prosjekt_navn        TEXT         NOT NULL,
+    prosjekt_beskrivelse TEXT         NOT NULL,
+    prosjekt_ansatt      INT          NOT NULL,
+    prosjekt_rolle       TEXT         NOT NULL,
+    prosjekt_timetall    INT          NOT NULL
 );
 ALTER TABLE Avdeling ADD CONSTRAINT fk_avdeling FOREIGN KEY(avdeling_id) REFERENCES Avdeling(avdeling_id) ON DELETE RESTRICT;
 ALTER TABLE Ansatt ADD CONSTRAINT fl_prosjekt FOREIGN KEY(prosjekt_id) REFERENCES Prosjekt(prosjekt_id);
