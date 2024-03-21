@@ -3,8 +3,6 @@ package Prosjekt;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(schema = "Dat107Oblig3")
 
@@ -23,7 +21,26 @@ public class ProsjektDeltagelse {
     @ManyToOne
     @JoinColumn(name = "pd_prosjekt")
     private Prosjekt prosjekt;
-    public ProsjektDeltagelse(){
+    public String ProsjektDeltagelse(){
 
+    public int getProsjektID() {
+        return prosjekt_id;
     }
+
+    public void setProsjektID(int prosjektID) {
+        this.prosjekt_id = prosjektID;
+    }
+
+    public String getPRolle() {
+        return p_rolle;
+    }
+
+    public int getProsjektBeskrivelse() {
+        return prosjekt_beskrivelse;
+    }
+
+    public void setProsjektBeskrivelse(int prosjektBeskrivelse) {
+        this.prosjekt_beskrivelse = prosjektBeskrivelse;
+    }
+
 }
