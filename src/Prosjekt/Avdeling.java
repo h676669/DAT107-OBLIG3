@@ -10,40 +10,40 @@ import javax.xml.validation.Schema;
 public class Avdeling {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int avdelingID;
+    private int avdeling_id;
 
     @Column(columnDefinition = "TEXT")
-    private String avdelingsnavn;
+    private String avdeling_navn;
 
     @Column(columnDefinition = "TEXT")
-    private int avdelingAnsatt;
+    private int avdeling_ansatt;
 
     @Column(columnDefinition = "INT")
     private int le_boss_id;
 
 
     public int getAvdelingID() {
-        return avdelingID;
+        return avdeling_id;
     }
 
     public void setAvdelingID(int avdelingID) {
-        this.avdelingID = avdelingID;
+        this.avdeling_id = avdelingID;
     }
 
     public String getAvdelingsnavn() {
-        return avdelingsnavn;
+        return avdeling_navn;
     }
 
     public void setAvdelingsnavn(String avdelingsnavn) {
-        this.avdelingsnavn = avdelingsnavn;
+        this.avdeling_navn = avdelingsnavn;
     }
 
     public int getAvdelingAnsatt() {
-        return avdelingAnsatt;
+        return avdeling_ansatt;
     }
 
     public void setAvdelingAnsatt(int avdelingAnsatt) {
-        this.avdelingAnsatt = avdelingAnsatt;
+        this.avdeling_ansatt = avdelingAnsatt;
     }
 
     public int getLe_boss_id() {

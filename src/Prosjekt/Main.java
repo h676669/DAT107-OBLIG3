@@ -32,7 +32,7 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            ansattDAO.close();
+            avdelingDAO.close();
         }
     }
 }
