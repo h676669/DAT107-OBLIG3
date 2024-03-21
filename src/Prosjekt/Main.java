@@ -25,7 +25,7 @@ public class Main {
             Avdeling avdeling= avdelingDAO.finnAvdelingMedId(avdelingID);
 
             if (avdeling != null) {
-                System.out.println("Found avdeling: ");
+                System.out.println("Found avdeling: " + avdeling.getAvdelingsnavn());
             } else {
                 System.out.println("Avdeling with ID " + avdelingID + " not found.");
             }
