@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class ProsjektDeltagelse {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int prosjekt_id;
+    private int prosjektdeltagelse_id;
 
     @Column(columnDefinition = "TEXT")
     private String p_rolle;
@@ -21,12 +21,12 @@ public class ProsjektDeltagelse {
     @JoinColumn(name = "pd_prosjekt")
     private Prosjekt prosjekt;
 
-    public int getProsjektID() {
-        return prosjekt_id;
+    public int getProsjektdeltagelse_id() {
+        return prosjektdeltagelse_id;
     }
 
-    public void setProsjektID(int prosjektID) {
-        this.prosjekt_id = prosjektID;
+    public void setProsjektdeltagelse_id(int prosjektID) {
+        this.prosjektdeltagelse_id = prosjektID;
     }
 
     public String getPRolle() {
