@@ -44,25 +44,41 @@ public class Main {
     public static void meny() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Trykk ein tast på hustelefonen for å velje eit valg");
-        System.out.println("1: slett tabellen");
-        System.out.println("2: legg til ein sopp");
-        System.out.println("3: Søk etter ansatt på ansatt-ID");
-        System.out.println("4: Søk etter ansatt på brukernavn (initialer)");
-        System.out.println("5: Utlisting av alle ansatte");
-        System.out.println("6: Oppdater en ansatt sin stilling og/ eller lønn");
-        System.out.println("7: Legg inn en ny ansatt");
+        System.out.println("1: Søk etter ansatt på ansatt-ID");
+        System.out.println("2: Søk etter ansatt på brukernavn (initialer)");
+        System.out.println("3: Utlisting av alle ansatte");
+        System.out.println("4: Oppdater en ansatt sin stilling og/ eller lønn");
+        System.out.println("5: Legg inn en ny ansatt");
 
-        String temp = switch (scanner.nextInt()) {
+        String invalidTekst = "Invalid, prøv igjen";
+
+        int valg = -1;
+
+        do {
+            while (!scanner.hasNextInt()) {
+                scanner.next();
+                System.out.println(invalidTekst);
+            }
+            valg = scanner.nextInt();
+            if (valg < 1 || valg > 5) {
+                System.out.println(invalidTekst);
+            }
+        } while (valg < 1 || valg > 5);
+
+        String tekst = switch (valg) {
             case 1 -> "Omg";
             case 2 -> "Omg!";
             case 3 -> "Omg!!";
             case 4 -> "Omg!!!";
             case 5 -> "Omg!!!!";
-            case 6 -> "Omg!!!!!";
-            case 7 -> "Omg!!!!!1";
-            default -> "invalid input";
+            default -> throw new IllegalStateException("Unexpected value: " + valg);
         };
-        System.out.println(temp);
+        System.out.println(tekst);
+
+
+        switch (valg) {
+            default -> System.out.println("todo");
+        }
     }
 
 
