@@ -39,7 +39,7 @@ public class ProsjektDeltagelse {
         return prosjekt_beskrivelse;
     }
 
-    public int setProsjektBeskrivelse(int prosjektBeskrivelse) {
+    public void setProsjektBeskrivelse(int prosjektBeskrivelse) {
         this.prosjekt_beskrivelse = prosjektBeskrivelse;
     }
 
