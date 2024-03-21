@@ -26,7 +26,7 @@ public class AnsattDAO {
             em.close();
         }
     }
-    public Ansatt finnAnsattMedBrukernanv(String brukernavn) {
+    public Ansatt finnAnsattMedBrukernavn(String brukernavn) {
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Ansatt> query = em.createQuery("select t from Ansatt t where t.brukernavn like :brukernavn", Ansatt.class);
