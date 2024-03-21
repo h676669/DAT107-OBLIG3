@@ -6,7 +6,6 @@ public class Main {
         AnsattDAO ansattDAO = new AnsattDAO();
         AvdelingDAO avdelingDAO = new AvdelingDAO();
 
-
         try {
             int ansattId = 1;
             Ansatt ansatt = ansattDAO.finnAnsattMedId(ansattId);
