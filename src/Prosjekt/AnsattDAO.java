@@ -1,16 +1,13 @@
 package Prosjekt;
 
-<<<<<<< Updated upstream
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-=======
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
->>>>>>> Stashed changes
 
 public class AnsattDAO {
 
@@ -28,8 +25,6 @@ public class AnsattDAO {
             em.close();
         }
     }
-<<<<<<< Updated upstream
-=======
     public Ansatt finnAnsattMedBrukernanv(String brukernavn) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -92,7 +87,6 @@ public class AnsattDAO {
         em.close();
         }
     }
->>>>>>> Stashed changes
 
     public void close() {
         if (emf != null) {
