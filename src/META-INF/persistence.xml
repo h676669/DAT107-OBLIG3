@@ -9,6 +9,25 @@
         <class>Prosjekt.Avdeling</class>
         <class>Prosjekt.Ansatt</class>
         <class>Prosjekt.Prosjekt</class>
+        <class>Prosjekt.ProsjektDeltagelse</class>
+        <properties>
+            <!--  Generelle JPA properties -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://129.151.221.119:5432/676669"/>
+            <property name="jakarta.persistence.jdbc.user" value="676669"/>
+            <property name="jakarta.persistence.jdbc.password" value="Kapteinrex34"/>
+
+            <!--  EclipseLink properties -->
+            <!--  Se https://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging -->
+            <property name="eclipselink.logging.level" value="WARNING"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="Avdeling" transaction-type="RESOURCE_LOCAL">
+
+        <class>Prosjekt.Avdeling</class>
+        <class>Prosjekt.Ansatt</class>
+        <class>Prosjekt.Prosjekt</class>
+        <class>Prosjekt.ProsjektDeltagelse</class>
         <properties>
             <!--  Generelle JPA properties -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>

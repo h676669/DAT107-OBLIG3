@@ -21,6 +21,17 @@ public class Avdeling {
     @Column(columnDefinition = "INT")
     private int le_boss_id;
 
+    public Avdeling(int avdelingId, String avdelingNavn, int avdelingAnsatt, int leBossId) {
+        avdeling_id = avdelingId;
+        avdeling_navn = avdelingNavn;
+        avdeling_ansatt = avdelingAnsatt;
+        le_boss_id = leBossId;
+    }
+
+    public Avdeling() {
+
+    }
+
 
     public int getAvdelingID() {
         return avdeling_id;

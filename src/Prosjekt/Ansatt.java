@@ -21,7 +21,7 @@ public class Ansatt {
     @Temporal(TemporalType.DATE)
     private Date ansettelsesDato; //?
     private double manedslonn;
-    @OneToMany(mappedBy = "ansatte")
+    @OneToMany(mappedBy = "ansatt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
     public String getFornavn() {
