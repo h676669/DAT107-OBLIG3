@@ -46,4 +46,60 @@ public class Ansatt {
         this.ansettelsesDato = ansettelsesDato;
         this.manedslonn = manedslonn;
     }
+
+    public int getAnsattID() {
+        return ansattID;
+    }
+
+    public void setAnsattID(int ansattID) {
+        this.ansattID = ansattID;
+    }
+
+    public String getBrukernavn() {
+        return brukernavn;
+    }
+
+    public void setBrukernavn(String brukernavn) {
+        this.brukernavn = brukernavn;
+    }
+
+    public void setFornavn(String fornavn) {
+        this.fornavn = fornavn;
+    }
+
+    public void setEtternavn(String etternavn) {
+        this.etternavn = etternavn;
+    }
+
+    public String getStilling() {
+        return stilling;
+    }
+
+    public void setStilling(String stilling) {
+        this.stilling = stilling;
+    }
+
+    public LocalDate getAnsettelsesDato() {
+        return ansettelsesDato;
+    }
+
+    public void setAnsettelsesDato(LocalDate ansettelsesDato) {
+        this.ansettelsesDato = ansettelsesDato;
+    }
+
+    public double getManedslonn() {
+        return manedslonn;
+    }
+
+    public void setManedslonn(double manedslonn) {
+        this.manedslonn = manedslonn;
+    }
+
+    public Prosjekt getProsjekt() {
+        return prosjekt;
+    }
+
+    public void setProsjekt(Prosjekt prosjekt) {
+        this.prosjekt = prosjekt;
+    }
 }
