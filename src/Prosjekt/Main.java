@@ -52,6 +52,7 @@ public class Main {
         String invalidTekst = "Invalid, prøv igjen";
 
         int valg = -1;
+        // Tvinger input til å være et tall mellom 1 og 5
         do {
             while (!scanner.hasNextInt()) {
                 scanner.next();
