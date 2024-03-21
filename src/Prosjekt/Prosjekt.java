@@ -9,10 +9,10 @@ import java.util.List;
 public class Prosjekt {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int p_id;
+    private int prosjekt_id;
 
     @Column(columnDefinition = "TEXT")
-    private String p_navn, p_beskrivelse;
+    private String prosjekt_navn, prosjekt_beskrivelse;
 
     //her skal det være for ting for ansatte i prosjektet
     @OneToMany(mappedBy = "prosjekt", fetch = FetchType.EAGER)
