@@ -21,7 +21,6 @@ public class ProsjektDeltagelse {
     @ManyToOne
     @JoinColumn(name = "pd_prosjekt")
     private Prosjekt prosjekt;
-    public String ProsjektDeltagelse(){
 
     public int getProsjektID() {
         return prosjekt_id;
@@ -34,13 +33,4 @@ public class ProsjektDeltagelse {
     public String getPRolle() {
         return p_rolle;
     }
-
-    public int getProsjektBeskrivelse() {
-        return prosjekt_beskrivelse;
-    }
-
-    public void setProsjektBeskrivelse(int prosjektBeskrivelse) {
-        this.prosjekt_beskrivelse = prosjektBeskrivelse;
-    }
-
 }
