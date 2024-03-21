@@ -3,13 +3,13 @@ package Prosjekt;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public class KoblingsTabellDAO {
+public class ProsjektDeltagelseDAO {
 
 
     private EntityManagerFactory emf;
 
-    public KoblingsTabellDAO() {
-        emf = Persistence.createEntityManagerFactory("KoblingsTabell");
+    public ProsjektDeltagelseDAO() {
+        emf = Persistence.createEntityManagerFactory("ProsjektDeltagelse");
     }
 
 
