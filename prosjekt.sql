@@ -12,7 +12,7 @@ CREATE TABLE Ansatt
     stilling        TEXT              NOT NULL,
     manedslonn      NUMERIC(10, 2)    NOT NULL,
     avdeling_id     INT               NOT NULL,
-    prosjekt_id     INT
+    prosjekt        INT
 );
 
 CREATE TABLE Avdeling
@@ -28,27 +28,24 @@ CREATE TABLE Prosjekt
     prosjekt_id          SERIAL PRIMARY KEY,
     prosjekt_navn        TEXT         NOT NULL,
     prosjekt_beskrivelse TEXT         NOT NULL,
-    prosjekt_ansatt      INT          NOT NULL,
-    prosjekt_rolle       TEXT         NOT NULL,
-    prosjekt_timetall    INT          NOT NULL
 );
 
 CREATE TABLE ProsjektDeltagelse
 (
+    pd_id SERIAL PRIMARY KEY,
     pd_ansatt   INT,
+    pd_rolle    TEXT,
     pd_timer    INT,
     pd_prosjekt INT,
-    CONSTRAINT fk_pd1 FOREIGN KEY(pd_ansatt) REFERENCES Ansatt(ansatt_id),
-    CONSTRAINT fk_pd2 FOREIGN KEY(pd_prosjekt) REFERENCES Prosjekt(prosjekt_id)
+    CONSTRAINT fk_pd_ansatt FOREIGN KEY(pd_ansatt) REFERENCES Ansatt(ansatt_id),
+    CONSTRAINT fk_pd_prosjekt FOREIGN KEY(pd_prosjekt) REFERENCES Prosjekt(prosjekt_id)
 );
 
 
-
+ALTER TABLE Ansatt ADD CONSTRAINT fk_prosjekt FOREIGN KEY (prosjekt) REFERENCES ProsjektDeltagelse(pd_id);
 ALTER TABLE Avdeling ADD CONSTRAINT fk_avdeling FOREIGN KEY(avdeling_id) REFERENCES Avdeling(avdeling_id) ON DELETE RESTRICT;
-ALTER TABLE Ansatt ADD CONSTRAINT fl_prosjekt FOREIGN KEY(prosjekt_id) REFERENCES Prosjekt(prosjekt_id);
 ALTER TABLE Avdeling ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_ansatt) REFERENCES Ansatt (ansatt_id);
 ALTER TABLE Avdeling ADD CONSTRAINT Avdeling_fk2 FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id);
-ALTER TABLE Prosjekt ADD CONSTRAINT Prosjekt_fk3 FOREIGN KEY (prosjekt_ansatt) REFERENCES Ansatt (ansatt_id);
 
 
 INSERT INTO Ansatt(brukernavn, fornavn, etternavn, ansettelsesdato, stilling, manedslonn, avdeling_id)
