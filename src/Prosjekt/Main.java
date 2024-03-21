@@ -53,7 +53,6 @@ public class Main {
         String invalidTekst = "Invalid, prøv igjen";
 
         int valg = -1;
-
         do {
             while (!scanner.hasNextInt()) {
                 scanner.next();
@@ -71,12 +70,17 @@ public class Main {
             case 3 -> "Omg!!";
             case 4 -> "Omg!!!";
             case 5 -> "Omg!!!!";
-            default -> throw new IllegalStateException("Unexpected value: " + valg);
+            default -> "wtf";
         };
         System.out.println(tekst);
 
-
+        // metodekall her
         switch (valg) {
+            case 1 -> System.out.println("todo");
+            case 2 -> System.out.println("todo");
+            case 3 -> System.out.println("todo");
+            case 4 -> System.out.println("todo");
+            case 5 -> System.out.println("todo");
             default -> System.out.println("todo");
         }
     }
