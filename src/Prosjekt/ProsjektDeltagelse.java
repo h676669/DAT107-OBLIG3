@@ -10,5 +10,6 @@ import jakarta.persistence.Table;
 public class ProsjektDeltagelse {
 
 
+    private int timer;
 
 }

@@ -35,8 +35,11 @@ CREATE TABLE Prosjekt
 
 CREATE TABLE ProsjektDeltagelse
 (
-    pd_timer INT,
-    pd_ansatt INT
+    pd_ansatt   INT,
+    pd_timer    INT,
+    pd_prosjekt INT,
+    CONSTRAINT fk_pd1 FOREIGN KEY(pd_ansatt) REFERENCES Ansatt(ansatt_id),
+    CONSTRAINT fk_pd2 FOREIGN KEY(pd_prosjekt) REFERENCES Prosjekt(prosjekt_id)
 );
 
 
