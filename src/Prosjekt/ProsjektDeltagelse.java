@@ -23,4 +23,24 @@ public class ProsjektDeltagelse {
     @JoinColumn(name = "pd_ansatt") // This should match the foreign key in the database
     private Ansatt ansatt;
 
+    public int getProsjektID() {
+        return prosjekt_id;
+    }
+
+    public void setProsjektID(int prosjektID) {
+        this.prosjekt_id = prosjektID;
+    }
+
+    public String getPRolle() {
+        return p_rolle;
+    }
+
+    public int getProsjektBeskrivelse() {
+        return prosjekt_beskrivelse;
+    }
+
+    public int setProsjektBeskrivelse(int prosjektBeskrivelse) {
+        this.prosjekt_beskrivelse = prosjektBeskrivelse;
+    }
+
 }
