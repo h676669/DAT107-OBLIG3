@@ -24,7 +24,7 @@ public class Ansatt {
     @OneToMany(mappedBy = "ansatt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
-    private int avdelingID, prosjektdeltagelseID;
+    private int avdeling_id, prosjektdeltagelse;
 
     public String getFornavn() {
         return fornavn;
@@ -38,15 +38,15 @@ public class Ansatt {
     }
     public Ansatt(String brukernavn, String fornavn,
                   String etternavn, String stilling, Date ansettelsesDato,
-                  Double manedslonn, int avdelingID, int prosjektdeltagelseID) {
+                  Double manedslonn, int avdelingID, int prosjektdeltagelse) {
         this.etternavn = etternavn;
         this.fornavn = fornavn;
         this.brukernavn = brukernavn;
         this.stilling = stilling;
         this.ansettelsesDato = ansettelsesDato;
         this.manedslonn = manedslonn;
-        this.avdelingID = avdelingID;
-        this.prosjektdeltagelseID = prosjektdeltagelseID;
+        this.avdeling_id = avdelingID;
+        this.prosjektdeltagelse = prosjektdeltagelse;
     }
 
     public int getAnsattID() {
@@ -106,19 +106,19 @@ public class Ansatt {
     }
 
     public int getAvdelingID() {
-        return avdelingID;
+        return avdeling_id;
     }
 
-    public void setAvdelingID(int avdelingID) {
-        this.avdelingID = avdelingID;
+    public void setAvdelingID(int avdeling_id) {
+        this.avdeling_id = avdeling_id;
     }
 
     public int getProsjektdeltagelseID() {
-        return prosjektdeltagelseID;
+        return prosjektdeltagelse;
     }
 
-    public void setProsjektdeltagelseID(int prosjektdeltagelseID) {
-        this.prosjektdeltagelseID = prosjektdeltagelseID;
+    public void setProsjektdeltagelseID(int prosjektdeltagelse) {
+        this.prosjektdeltagelse = prosjektdeltagelse;
     }
 
 }
