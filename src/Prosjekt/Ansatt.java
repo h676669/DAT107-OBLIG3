@@ -119,11 +119,4 @@ public class Ansatt {
         this.prosjektdeltagelseID = prosjektdeltagelseID;
     }
 
-    public List<Prosjekt.ProsjektDeltagelse> getProsjektDeltagelse() {
-        return prosjektDeltagelse;
-    }
-
-    public void setProsjektDeltagelse(List<Prosjekt.ProsjektDeltagelse> prosjektDeltagelse) {
-        this.prosjektDeltagelse = prosjektDeltagelse;
-    }
 }
