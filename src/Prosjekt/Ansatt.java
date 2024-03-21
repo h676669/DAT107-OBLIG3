@@ -21,9 +21,6 @@ public class Ansatt {
     private Date ansettelsesDato; //?
     private double manedslonn;
 
-    @ManyToOne
-    @JoinColumn(name = "prosjekt_id")
-    private Prosjekt prosjekt;
 
     public String getFornavn() {
         return fornavn;
@@ -38,7 +35,6 @@ public class Ansatt {
     public Ansatt(Prosjekt prosjekt, String brukernavn, String fornavn,
                   String etternavn, String stilling, Date ansettelsesDato,
                   Double manedslonn) {
-        this.prosjekt = prosjekt;
         this.etternavn = etternavn;
         this.fornavn = fornavn;
         this.brukernavn = brukernavn;
@@ -93,13 +89,5 @@ public class Ansatt {
 
     public void setManedslonn(double manedslonn) {
         this.manedslonn = manedslonn;
-    }
-
-    public Prosjekt getProsjekt() {
-        return prosjekt;
-    }
-
-    public void setProsjekt(Prosjekt prosjekt) {
-        this.prosjekt = prosjekt;
     }
 }

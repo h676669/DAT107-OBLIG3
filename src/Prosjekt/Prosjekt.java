@@ -14,11 +14,4 @@ public class Prosjekt {
     @Column(columnDefinition = "TEXT")
     private String prosjekt_navn, prosjekt_beskrivelse;
 
-    //her skal det være for ting for ansatte i prosjektet
-    @OneToMany(mappedBy = "prosjekt", fetch = FetchType.EAGER)
-    private List<Ansatt> ListeAnsatt;
-
-    public void leggTilAnsatt(Ansatt ny) {
-        ListeAnsatt.add(ny);
-    }
 }
