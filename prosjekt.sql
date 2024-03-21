@@ -27,7 +27,7 @@ CREATE TABLE Prosjekt
 (
     prosjekt_id          SERIAL PRIMARY KEY,
     prosjekt_navn        TEXT         NOT NULL,
-    prosjekt_beskrivelse TEXT         NOT NULL,
+    prosjekt_beskrivelse TEXT         NOT NULL
 );
 
 CREATE TABLE ProsjektDeltagelse
