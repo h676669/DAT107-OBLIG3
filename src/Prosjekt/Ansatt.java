@@ -13,7 +13,7 @@ public class Ansatt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ansatt_id;
+    private int ansatt_id, avdelingID, prosjektdeltagelseID;
 
     @Column(columnDefinition = "TEXT")
     private String brukernavn, fornavn, etternavn, stilling;
@@ -34,15 +34,17 @@ public class Ansatt {
     public Ansatt(){
 
     }
-    public Ansatt(Prosjekt prosjekt, String brukernavn, String fornavn,
+    public Ansatt(String brukernavn, String fornavn,
                   String etternavn, String stilling, Date ansettelsesDato,
-                  Double manedslonn) {
+                  Double manedslonn, int avdelingID, int prosjektdeltagelseID) {
         this.etternavn = etternavn;
         this.fornavn = fornavn;
         this.brukernavn = brukernavn;
         this.stilling = stilling;
         this.ansettelsesDato = ansettelsesDato;
         this.manedslonn = manedslonn;
+        this.avdelingID = avdelingID;
+        this.prosjektdeltagelseID = prosjektdeltagelseID;
     }
 
     public int getAnsattID() {
