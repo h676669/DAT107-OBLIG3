@@ -12,7 +12,7 @@ CREATE TABLE Ansatt
     stilling        TEXT              NOT NULL,
     manedslonn      NUMERIC(10, 2)    NOT NULL,
     avdeling_id     INT               NOT NULL,
-    prosjekt        INT
+    prosjektdeltagelse   INT
 );
 
 CREATE TABLE Avdeling
@@ -42,7 +42,7 @@ CREATE TABLE ProsjektDeltagelse
 );
 
 
-ALTER TABLE Ansatt ADD CONSTRAINT fk_prosjekt FOREIGN KEY (prosjekt) REFERENCES ProsjektDeltagelse(pd_id);
+ALTER TABLE Ansatt ADD CONSTRAINT fk_prosjekt FOREIGN KEY (prosjektdeltagelse) REFERENCES ProsjektDeltagelse(pd_id);
 ALTER TABLE Avdeling ADD CONSTRAINT fk_avdeling FOREIGN KEY(avdeling_id) REFERENCES Avdeling(avdeling_id) ON DELETE RESTRICT;
 ALTER TABLE Avdeling ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_ansatt) REFERENCES Ansatt (ansatt_id);
 ALTER TABLE Avdeling ADD CONSTRAINT Avdeling_fk2 FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id);
