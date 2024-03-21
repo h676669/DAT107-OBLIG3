@@ -6,9 +6,9 @@
 
     <persistence-unit name="Ansatt" transaction-type="RESOURCE_LOCAL">
 
-        <class>Prosjekt.Main</class>
         <class>Prosjekt.Avdeling</class>
         <class>Prosjekt.Ansatt</class>
+        <class>Prosjekt.Prosjekt</class>
         <properties>
             <!--  Generelle JPA properties -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>

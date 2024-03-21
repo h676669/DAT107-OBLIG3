@@ -7,6 +7,7 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class AnsattDAO {
@@ -67,7 +68,7 @@ public class AnsattDAO {
         }
     }
     public void lagreNyAnsatt(Prosjekt prosjekt, String brukernavn, String fornavn,
-                              String etternavn, String stilling, LocalDate ansettelsesDato,
+                              String etternavn, String stilling, Date ansettelsesDato,
                               Double manedslonn){
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();

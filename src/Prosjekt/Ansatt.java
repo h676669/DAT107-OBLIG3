@@ -2,7 +2,7 @@ package Prosjekt;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(schema = "Dat107Oblig3")
@@ -12,13 +12,13 @@ public class Ansatt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ansattID;
+    private int ansatt_id;
 
     @Column(columnDefinition = "TEXT")
     private String brukernavn, fornavn, etternavn, stilling;
 
     @Temporal(TemporalType.DATE)
-    private LocalDate ansettelsesDato; //?
+    private Date ansettelsesDato; //?
     private double manedslonn;
 
     @ManyToOne
@@ -36,7 +36,7 @@ public class Ansatt {
 
     }
     public Ansatt(Prosjekt prosjekt, String brukernavn, String fornavn,
-                  String etternavn, String stilling, LocalDate ansettelsesDato,
+                  String etternavn, String stilling, Date ansettelsesDato,
                   Double manedslonn) {
         this.prosjekt = prosjekt;
         this.etternavn = etternavn;
@@ -48,11 +48,11 @@ public class Ansatt {
     }
 
     public int getAnsattID() {
-        return ansattID;
+        return ansatt_id;
     }
 
     public void setAnsattID(int ansattID) {
-        this.ansattID = ansattID;
+        this.ansatt_id = ansattID;
     }
 
     public String getBrukernavn() {
@@ -79,11 +79,11 @@ public class Ansatt {
         this.stilling = stilling;
     }
 
-    public LocalDate getAnsettelsesDato() {
+    public Date getAnsettelsesDato() {
         return ansettelsesDato;
     }
 
-    public void setAnsettelsesDato(LocalDate ansettelsesDato) {
+    public void setAnsettelsesDato(Date ansettelsesDato) {
         this.ansettelsesDato = ansettelsesDato;
     }
 
