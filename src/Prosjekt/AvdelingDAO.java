@@ -6,8 +6,9 @@ import jakarta.persistence.Persistence;
 
 public class AvdelingDAO {
     private EntityManagerFactory emf;
-    public AvdelingDAO() {
-        emf = Persistence.createEntityManagerFactory("Avdeling");
+
+    public AvdelingDAO(){
+        emf = Persistence.createEntityManagerFactory("Ansatt");
     }
     public Avdeling finnAvdelingMedId(int id){
         EntityManager em = emf.createEntityManager();
@@ -17,6 +18,10 @@ public class AvdelingDAO {
             em.close();
         }
     }
-
+    public void close() {
+        if (emf != null) {
+            emf.close();
+        }
+    }
     
 }
