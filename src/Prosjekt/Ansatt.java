@@ -3,6 +3,7 @@ package Prosjekt;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(schema = "Dat107Oblig3")
@@ -20,7 +21,8 @@ public class Ansatt {
     @Temporal(TemporalType.DATE)
     private Date ansettelsesDato; //?
     private double manedslonn;
-
+    @OneToMany(mappedBy = "ansatte")
+    private List<ProsjektDeltagelse> prosjektDeltagelse;
 
     public String getFornavn() {
         return fornavn;
