@@ -14,4 +14,11 @@ public class Prosjekt {
     @Column(columnDefinition = "TEXT")
     private String prosjekt_navn, prosjekt_beskrivelse;
 
+    @OneToMany(mappedBy = "prosjekt") // Corrected mapping field name
+    private List<ProsjektDeltagelse> ProsjektListe;
+
+    public Prosjekt(){
+        
+    }
+
 }
