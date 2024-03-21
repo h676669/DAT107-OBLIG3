@@ -32,4 +32,8 @@ public class ProsjektDeltagelse {
     public String getPRolle() {
         return p_rolle;
     }
+
+    public void setPRolle(String pRolle) {
+        this.p_rolle = pRolle;
+    }
 }
