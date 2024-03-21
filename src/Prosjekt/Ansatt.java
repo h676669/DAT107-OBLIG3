@@ -95,11 +95,11 @@ public class Ansatt {
         this.manedslonn = manedslonn;
     }
 
-    public Prosjekt.Prosjekt getProsjekt() {
+    public Prosjekt getProsjekt() {
         return prosjekt;
     }
 
-    public void setProsjekt(Prosjekt.Prosjekt prosjekt) {
+    public void setProsjekt(Prosjekt prosjekt) {
         this.prosjekt = prosjekt;
     }
 }
