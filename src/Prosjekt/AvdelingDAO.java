@@ -53,7 +53,7 @@ public class AvdelingDAO {
         EntityManager em = emf.createEntityManager();
         try {
 
-
+            return null;
 
         }
         finally {

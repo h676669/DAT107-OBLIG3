@@ -13,7 +13,7 @@ public class Ansatt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ansatt_id, avdelingID, prosjektdeltagelseID;
+    private int ansatt_id;
 
     @Column(columnDefinition = "TEXT")
     private String brukernavn, fornavn, etternavn, stilling;
@@ -24,7 +24,7 @@ public class Ansatt {
     @OneToMany(mappedBy = "ansatt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
-    private int avdeling_id;
+    private int avdelingID, prosjektdeltagelseID;
 
     public String getFornavn() {
         return fornavn;
