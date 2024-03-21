@@ -13,7 +13,7 @@ public class Ansatt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ansatt_id;
+    private int ansatt_id, avdelingID, prosjektdeltagelseID;
 
     @Column(columnDefinition = "TEXT")
     private String brukernavn, fornavn, etternavn, stilling;
@@ -36,15 +36,17 @@ public class Ansatt {
     public Ansatt(){
 
     }
-    public Ansatt(Prosjekt prosjekt, String brukernavn, String fornavn,
+    public Ansatt(String brukernavn, String fornavn,
                   String etternavn, String stilling, Date ansettelsesDato,
-                  Double manedslonn) {
+                  Double manedslonn, int avdelingID, int prosjektdeltagelseID) {
         this.etternavn = etternavn;
         this.fornavn = fornavn;
         this.brukernavn = brukernavn;
         this.stilling = stilling;
         this.ansettelsesDato = ansettelsesDato;
         this.manedslonn = manedslonn;
+        this.avdelingID = avdelingID;
+        this.prosjektdeltagelseID = prosjektdeltagelseID;
     }
 
     public int getAnsattID() {
@@ -94,4 +96,29 @@ public class Ansatt {
     public void setManedslonn(double manedslonn) {
         this.manedslonn = manedslonn;
     }
+
+    public int getAnsatt_id() {
+        return ansatt_id;
+    }
+
+    public void setAnsatt_id(int ansatt_id) {
+        this.ansatt_id = ansatt_id;
+    }
+
+    public int getAvdelingID() {
+        return avdelingID;
+    }
+
+    public void setAvdelingID(int avdelingID) {
+        this.avdelingID = avdelingID;
+    }
+
+    public int getProsjektdeltagelseID() {
+        return prosjektdeltagelseID;
+    }
+
+    public void setProsjektdeltagelseID(int prosjektdeltagelseID) {
+        this.prosjektdeltagelseID = prosjektdeltagelseID;
+    }
+
 }
