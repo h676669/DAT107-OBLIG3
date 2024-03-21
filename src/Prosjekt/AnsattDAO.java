@@ -67,28 +67,6 @@ public class AnsattDAO {
             em.close();
         }
     }
-    public void lagreNyAnsatt(Prosjekt prosjekt, String brukernavn, String fornavn,
-                              String etternavn, String stilling, Date ansettelsesDato,
-                              Double manedslonn){
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            Ansatt nyAnsatt = new Ansatt(prosjekt,brukernavn,fornavn,etternavn,stilling,ansettelsesDato,manedslonn);
-            em.persist(nyAnsatt);
-            tx.commit();
-        }
-        catch (Throwable e){
-            e.printStackTrace();
-            if(tx.isActive()){
-                tx.rollback();
-            }
-        }
-        finally {
-        em.close();
-        }
-    }
-
     public void close() {
         if (emf != null) {
             emf.close();
@@ -105,7 +83,9 @@ public class AnsattDAO {
 
         } catch (Throwable e) {
             e.printStackTrace();
-            tx.rollback();
+            if(tx.isActive()){
+                tx.rollback();
+            }
         } finally {
             em.close();
         }
