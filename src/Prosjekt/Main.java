@@ -1,8 +1,11 @@
 package Prosjekt;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
+        meny();
         AnsattDAO ansattDAO = new AnsattDAO();
         AvdelingDAO avdelingDAO = new AvdelingDAO();
 
@@ -35,4 +38,30 @@ public class Main {
             avdelingDAO.close();
         }
     }
+
+
+    //TODO alt
+    public static void meny() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Trykk ein tast på hustelefonen for å velje eit valg");
+        System.out.println("1: slett tabellen");
+        System.out.println("2: legg til ein sopp");
+        System.out.println("3: legg til to soppar");
+
+        switch (scanner.nextInt()) {
+            case 1: {
+                System.out.println("du valgte feil");
+                break;
+            }
+            case 2: {
+                System.out.println("du valgte feil!");
+                break;
+            }
+            case 3: {
+                System.out.println("prøv igjen seinare");
+            }
+        }
+    }
+
+
 }
