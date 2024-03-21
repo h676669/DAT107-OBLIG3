@@ -1,9 +1,6 @@
 package Prosjekt;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -31,6 +28,27 @@ public class AvdelingDAO {
         em.close();
         }
     }
+
+    public void lagreNyAvdeling(int avdeling_id, String avdeling_navn, int avdeling_ansatt, int le_boss_id){
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            Avdeling nyAvdeling = new Avdeling(avdeling_id, avdeling_navn, avdeling_ansatt, le_boss_id);
+            em.persist(nyAvdeling);
+            tx.commit();
+        }
+        catch (Throwable e){
+            e.printStackTrace();
+            if(tx.isActive()){
+                tx.rollback();
+            }
+        }
+        finally {
+            em.close();
+        }
+    }
+
     public void close() {
         if (emf != null) {
             emf.close();
