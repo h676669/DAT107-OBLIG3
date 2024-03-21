@@ -2,6 +2,7 @@ package Prosjekt;
 
 import jakarta.persistence.*;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class AvdelingDAO {
@@ -46,6 +47,18 @@ public class AvdelingDAO {
         }
         finally {
             em.close();
+        }
+    }
+    public List<Avdeling> skrivUtAlleAnsatteAvdeling(int id){
+        EntityManager em = emf.createEntityManager();
+        try {
+            Avdeling managedAvdeling = finnAvdelingMedId(id);
+            TypedQuery<Avdeling> query = em.createQuery("select t from Avdeling t where t.avdeling_id like :avdeling_id", Avdeling.class);
+            query.setParameter("avdeling_id", id);
+            return query.getResultList();
+        }
+        finally {
+        em.close();
         }
     }
 

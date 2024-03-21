@@ -14,7 +14,6 @@ public class ProsjektDeltagelse {
     @Column(columnDefinition = "TEXT")
     private String p_rolle;
 
-
     @ManyToOne // This indicates the many-to-one side of the relationship
     @JoinColumn(name = "pd_ansatt") // This should match the foreign key in the database
     private Ansatt ansatt;
