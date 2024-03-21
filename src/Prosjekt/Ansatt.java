@@ -24,6 +24,8 @@ public class Ansatt {
     @OneToMany(mappedBy = "ansatt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
+    private int avdeling_id;
+
     public String getFornavn() {
         return fornavn;
     }

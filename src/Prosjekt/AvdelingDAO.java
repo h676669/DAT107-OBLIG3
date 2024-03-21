@@ -49,13 +49,12 @@ public class AvdelingDAO {
             em.close();
         }
     }
-    public List<Avdeling> skrivUtAlleAnsatteAvdeling(int id){
+    public List<Ansatt> skrivUtAlleAnsatteAvdeling(int id){
         EntityManager em = emf.createEntityManager();
         try {
-            Avdeling managedAvdeling = finnAvdelingMedId(id);
-            TypedQuery<Avdeling> query = em.createQuery("select t from Avdeling t where t.avdeling_id like :avdeling_id", Avdeling.class);
-            query.setParameter("avdeling_id", id);
-            return query.getResultList();
+
+
+
         }
         finally {
         em.close();
