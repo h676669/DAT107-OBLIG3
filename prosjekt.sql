@@ -5,7 +5,7 @@ SET search_path TO Dat107Oblig3;
 CREATE TABLE Ansatt
 (
     ansatt_id       SERIAL PRIMARY KEY,
-    brukernavn      VARCHAR(4) UNIQUE NOT NULL,
+    brukernavn      VARCHAR(4)        NOT NULL,
     fornavn         TEXT              NOT NULL,
     etternavn       TEXT              NOT NULL,
     ansettelsesdato DATE              NOT NULL,
