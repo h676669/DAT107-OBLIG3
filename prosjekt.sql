@@ -33,7 +33,7 @@ CREATE TABLE Prosjekt
     prosjekt_timetall    INT          NOT NULL
 );
 
-CREATE TABLE Dat107Oblig3.ProsjektDeltagelse
+CREATE TABLE ProsjektDeltagelse
 (
     pd_timer INT,
     pd_ansatt INT
