@@ -38,7 +38,6 @@ public class AnsattDAO {
     }
     public List<Ansatt> finnAlleAnsatt(){
         EntityManager em = emf.createEntityManager();
-
         try {
             TypedQuery<Ansatt> query = em.createQuery("select t from Ansatt t", Ansatt.class);
             return query.getResultList();
