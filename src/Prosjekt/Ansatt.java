@@ -24,7 +24,10 @@ public class Ansatt {
     @OneToMany(mappedBy = "ansatt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
-    private int avdeling_id, prosjektdeltagelse;
+    @ManyToOne
+    @JoinColumn(name ="avdeling_id")
+    private Avdeling avdeling_id;
+    private int prosjektdeltagelse;
 
     public String getFornavn() {
         return fornavn;
@@ -45,7 +48,7 @@ public class Ansatt {
         this.stilling = stilling;
         this.ansettelsesDato = ansettelsesDato;
         this.manedslonn = manedslonn;
-        this.avdeling_id = avdelingID;
+        setAvdelingID(avdelingID);
         this.prosjektdeltagelse = prosjektdeltagelse;
     }
 
@@ -106,11 +109,11 @@ public class Ansatt {
     }
 
     public int getAvdelingID() {
-        return avdeling_id;
+        return avdeling_id.getAvdelingID();
     }
 
     public void setAvdelingID(int avdeling_id) {
-        this.avdeling_id = avdeling_id;
+        this.avdeling_id.setAvdelingID(avdeling_id);
     }
 
     public int getProsjektdeltagelseID() {

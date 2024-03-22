@@ -30,7 +30,7 @@ public class AvdelingDAO {
         }
     }
 
-    public void lagreNyAvdeling(int avdeling_id, String avdeling_navn, int avdeling_ansatt, int le_boss_id){
+    public void lagreNyAvdeling(int avdeling_id, String avdeling_navn,List<Ansatt> avdeling_ansatt, int le_boss_id){
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
@@ -49,12 +49,11 @@ public class AvdelingDAO {
             em.close();
         }
     }
-    public List<Ansatt> skrivUtAlleAnsatteAvdeling(int id){
+    public void skrivUtAlleAnsatteAvdeling(int id){
         EntityManager em = emf.createEntityManager();
         try {
-            TypedQuery<Ansatt> query = em.createQuery("select t from Ansatt t where t.avdeling_id = :avdeling", Ansatt.class);
-            query.setParameter("avdeling",id);
-            return query.getResultList();
+           Avdeling managedAvdeling = finnAvdelingMedId(id);
+           managedAvdeling.skrivUtAlleAnsatt();
         }
         finally {
         em.close();

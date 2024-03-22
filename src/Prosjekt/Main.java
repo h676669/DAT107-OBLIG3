@@ -42,13 +42,7 @@ public class Main {
         try {
 
             int avdelingID = 1;
-            List<Ansatt> avdeling= avdelingDAO.skrivUtAlleAnsatteAvdeling(avdelingID);
-
-            if (avdeling != null) {
-                System.out.println("Alle ansatte med i avdeling  " +avdelingID + ": "+ avdeling);
-            } else {
-                System.out.println("Avdeling with ID " + avdelingID + " not found.");
-            }
+            avdelingDAO.skrivUtAlleAnsatteAvdeling(avdelingID);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

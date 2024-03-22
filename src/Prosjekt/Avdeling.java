@@ -2,7 +2,7 @@ package Prosjekt;
 
 import jakarta.persistence.*;
 
-import javax.xml.validation.Schema;
+import java.util.List;
 
 @Entity
 @Table(schema = "Dat107Oblig3")
@@ -16,13 +16,13 @@ public class Avdeling {
     private String avdeling_navn;
 
 
-    @Column(columnDefinition = "INT")
-    private int avdeling_ansatt;
+    @OneToMany(mappedBy = "avdeling_id")
+    private List<Ansatt> avdeling_ansatt;
 
     @Column(columnDefinition = "INT")
     private int le_boss_id;
 
-    public Avdeling(int avdelingId, String avdelingNavn, int avdelingAnsatt, int leBossId) {
+    public Avdeling(int avdelingId, String avdelingNavn, List<Ansatt> avdelingAnsatt, int leBossId) {
         avdeling_id = avdelingId;
         avdeling_navn = avdelingNavn;
         avdeling_ansatt = avdelingAnsatt;
@@ -49,11 +49,11 @@ public class Avdeling {
         this.avdeling_navn = avdelingsnavn;
     }
 
-    public int getAvdelingAnsatt() {
+    public List<Ansatt> getAvdelingAnsatt() {
         return avdeling_ansatt;
     }
 
-    public void setAvdelingAnsatt(int avdelingAnsatt) {
+    public void setAvdelingAnsatt(List<Ansatt> avdelingAnsatt) {
         this.avdeling_ansatt = avdelingAnsatt;
     }
 
@@ -64,4 +64,11 @@ public class Avdeling {
     public void setLe_boss_id(int le_boss_id) {
         this.le_boss_id = le_boss_id;
     }
+    public void skrivUtAlleAnsatt(){
+        System.out.println("Ansatt ID | Navn");
+        for (Ansatt ansatt : avdeling_ansatt){
+            System.out.println(ansatt.getAnsatt_id() +": " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+        }
+    }
 }
+
