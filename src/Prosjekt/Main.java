@@ -1,5 +1,6 @@
 package Prosjekt;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -23,11 +24,28 @@ public class Main {
             ansattDAO.close();
         }
         try {
+
             int avdelingID = 1;
             Avdeling avdeling= avdelingDAO.finnAvdelingMedId(avdelingID);
 
             if (avdeling != null) {
                 System.out.println("Found avdeling: " + avdeling.getAvdelingsnavn());
+            } else {
+                System.out.println("Avdeling with ID " + avdelingID + " not found.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            avdelingDAO.close();
+        }
+        avdelingDAO = new AvdelingDAO();
+        try {
+
+            int avdelingID = 1;
+            List<Ansatt> avdeling= avdelingDAO.skrivUtAlleAnsatteAvdeling(avdelingID);
+
+            if (avdeling != null) {
+                System.out.println("Alle ansatte med i avdeling  " +avdelingID + ": "+ avdeling);
             } else {
                 System.out.println("Avdeling with ID " + avdelingID + " not found.");
             }

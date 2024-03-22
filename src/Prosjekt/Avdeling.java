@@ -15,6 +15,7 @@ public class Avdeling {
     @Column(columnDefinition = "TEXT")
     private String avdeling_navn;
 
+
     @Column(columnDefinition = "INT")
     private int avdeling_ansatt;
 
@@ -31,7 +32,6 @@ public class Avdeling {
     public Avdeling() {
 
     }
-
 
     public int getAvdelingID() {
         return avdeling_id;

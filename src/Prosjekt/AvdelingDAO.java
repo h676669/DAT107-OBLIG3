@@ -52,9 +52,9 @@ public class AvdelingDAO {
     public List<Ansatt> skrivUtAlleAnsatteAvdeling(int id){
         EntityManager em = emf.createEntityManager();
         try {
-
-            return null;
-
+            TypedQuery<Ansatt> query = em.createQuery("select t from Ansatt t where t.avdeling_id = :avdeling", Ansatt.class);
+            query.setParameter("avdeling",id);
+            return query.getResultList();
         }
         finally {
         em.close();
