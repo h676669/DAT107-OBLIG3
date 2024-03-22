@@ -108,8 +108,8 @@ public class Ansatt {
         this.ansatt_id = ansatt_id;
     }
 
-    public int getAvdelingID() {
-        return avdeling_id.getAvdelingID();
+    public Avdeling getAvdeling(){
+        return avdeling_id;
     }
 
     public void setAvdelingID(int avdeling_id) {

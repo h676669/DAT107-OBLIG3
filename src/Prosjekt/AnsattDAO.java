@@ -46,7 +46,7 @@ public class AnsattDAO {
             em.close();
         }
     }
-    public void oppdaterAnsatt(int id, String stilling, double lonn){
+    public void oppdaterAnsatt(int id, String stilling, double lonn,int avdeling){
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
@@ -54,6 +54,9 @@ public class AnsattDAO {
             Ansatt managedAnsatt = finnAnsattMedId(id);
             managedAnsatt.setManedslonn(lonn);
             managedAnsatt.setStilling(stilling);
+            if (managedAnsatt.getAnsatt_id() != managedAnsatt.getAvdeling().getLe_boss_id()){
+                managedAnsatt.setAvdelingID(avdeling);
+            }
             tx.commit();
         }
         catch (Throwable e){

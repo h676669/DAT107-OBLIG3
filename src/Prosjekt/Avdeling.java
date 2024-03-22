@@ -29,9 +29,7 @@ public class Avdeling {
         le_boss_id = leBossId;
     }
 
-    public Avdeling() {
-
-    }
+    public Avdeling() {}
 
     public int getAvdelingID() {
         return avdeling_id;

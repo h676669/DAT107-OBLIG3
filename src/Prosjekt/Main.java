@@ -24,7 +24,6 @@ public class Main {
             ansattDAO.close();
         }
         try {
-
             int avdelingID = 1;
             Avdeling avdeling= avdelingDAO.finnAvdelingMedId(avdelingID);
 
@@ -38,9 +37,9 @@ public class Main {
         } finally {
             avdelingDAO.close();
         }
+        //må gjøre dette siden han blir .close() over
         avdelingDAO = new AvdelingDAO();
         try {
-
             int avdelingID = 1;
             avdelingDAO.skrivUtAlleAnsatteAvdeling(avdelingID);
         } catch (Exception e) {

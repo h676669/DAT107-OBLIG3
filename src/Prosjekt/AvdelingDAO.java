@@ -30,13 +30,13 @@ public class AvdelingDAO {
         }
     }
 
-    public void lagreNyAvdeling(int avdeling_id, String avdeling_navn,List<Ansatt> avdeling_ansatt, int le_boss_id){
+    public void lagreNyAvdeling(int avdeling_id,String avdeling_navn){
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            Avdeling nyAvdeling = new Avdeling(avdeling_id, avdeling_navn, avdeling_ansatt, le_boss_id);
-            em.persist(nyAvdeling);
+            
+
             tx.commit();
         }
         catch (Throwable e){
@@ -59,11 +59,9 @@ public class AvdelingDAO {
         em.close();
         }
     }
-
     public void close() {
         if (emf != null) {
             emf.close();
         }
     }
-    
 }
