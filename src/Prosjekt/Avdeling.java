@@ -67,7 +67,12 @@ public class Avdeling {
     public void skrivUtAlleAnsatt(){
         System.out.println("Ansatt ID | Navn");
         for (Ansatt ansatt : avdeling_ansatt){
-            System.out.println(ansatt.getAnsatt_id() +": " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+            if (ansatt.getAnsatt_id()!= le_boss_id){
+                System.out.println(ansatt.getAnsatt_id() +": " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+            }
+            else {
+                System.out.println(ansatt.getAnsatt_id() +": " + ansatt.getFornavn() + " " + ansatt.getEtternavn() +" SJEF!");
+            }
         }
     }
 }
