@@ -1,5 +1,9 @@
 package Prosjekt;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,6 +17,7 @@ public class Main {
 
     //TODO alt
     public static void meny() {
+        EntityManagerFactory emf;
         AnsattDAO ansattDAO = new AnsattDAO();
         AvdelingDAO avdelingDAO = new AvdelingDAO();
 
@@ -68,8 +73,35 @@ public class Main {
                     avdelingDAO.close();
                 }
             }
-            case 4 -> System.out.println("todo");
-            case 5 -> System.out.println("todo");
+            case 4 -> {
+                ansattDAO = new AnsattDAO();
+                System.out.println("Skriv in ansatt ID:");
+                int id = scanner.nextInt();
+                System.out.println();
+                System.out.println("Oppdater:");
+                System.out.println("1: Stilling");
+                System.out.println("2: Lønn");
+                System.out.println("3: Stilling og lønn");
+                switch (scanner.nextInt()) {
+                    case 1 -> {
+                        System.out.println("Skriv inn ny stilling");
+
+                        ansattDAO.oppdaterAnsatt(id, scanner.nextLine());
+                    }
+                    case 2 -> {
+                        System.out.println("SKriv inn ny lønn");
+                        ansattDAO.oppdaterAnsatt(id, scanner.nextLine());
+                    }
+                    case 3 -> {
+                        System.out.println("Skriv inn ny stilling og deretter lønn");
+                        ansattDAO.oppdaterAnsatt(id, scanner.nextLine(), scanner.nextInt());
+                    }
+                }
+
+            }
+            case 5 -> {
+
+            }
             default -> System.out.println("todo");
         }
         System.out.println();
