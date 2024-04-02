@@ -66,10 +66,9 @@ public class ProsjektDeltagelse {
     public ProsjektDeltagelse(){
 
     }
-    public ProsjektDeltagelse(int prosjektdeltagelse_id, String p_rolle, Ansatt ansatt, Prosjekt prosjekt, int timer){
+    public ProsjektDeltagelse(String p_rolle, Ansatt ansatt, Prosjekt prosjekt, int timer){
         this.p_rolle = p_rolle;
         this.prosjekt = prosjekt;
-        this.prosjektdeltagelse_id = prosjektdeltagelse_id;
         this.ansatt = ansatt;
         this.timer = timer;
     }

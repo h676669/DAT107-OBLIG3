@@ -1,6 +1,8 @@
 package Prosjekt;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
 public class ProsjektDeltagelseDAO {
@@ -11,6 +13,45 @@ public class ProsjektDeltagelseDAO {
     public ProsjektDeltagelseDAO() {
         emf = Persistence.createEntityManagerFactory("ProsjektDeltagelse");
     }
+
+    public void lagreNyProsjektDeltagelse(String rolle, Ansatt ansatt, Prosjekt prosjekt, int timer) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            em.persist(new ProsjektDeltagelse(rolle, ansatt, prosjekt, timer));
+            tx.commit();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+        } finally {
+            em.close();
+        }
+    }
+
+    public ProsjektDeltagelse finnProsjektDeltagelse(int id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(ProsjektDeltagelse.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    public void leggTilTimer(int id, int timer) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            finnProsjektDeltagelse(id).setTimer(finnProsjektDeltagelse(id).getTimer() + timer);
+            tx.commit();
+        } finally {
+            em.close();
+        }
+    }
+
+
 
 
 }
