@@ -115,7 +115,7 @@ public class AvdelingDAO {
             managedAvdeling.setAvdelingAnsatt(nyeAnsatte);
             managedAvdeling.setAvdelingsnavn(navn);
             managedAvdeling.setLe_boss_id(Sjef_id);
-
+            em.merge(managedAvdeling);
             tx.commit();
         } catch (Throwable e) {
             e.printStackTrace();
