@@ -91,6 +91,7 @@ public class AvdelingDAO {
                 Avdeling managedAvdeling = finnAvdelingMedId(avdeling_id);
                 List<Ansatt> alleAnsatteAvdeling = managedAvdeling.getAvdelingAnsatt();
                 alleAnsatteAvdeling.add(nyAnsatt);
+                nyAnsatt.setAvdelingID(avdeling_id);
                 oppdaterAvdeling(avdeling_id,alleAnsatteAvdeling,managedAvdeling.getAvdelingsnavn(),managedAvdeling.getLe_boss_id());
                 return true;
             }
@@ -116,6 +117,7 @@ public class AvdelingDAO {
             managedAvdeling.setAvdelingAnsatt(nyeAnsatte);
             managedAvdeling.setAvdelingsnavn(navn);
             managedAvdeling.setLe_boss_id(Sjef_id);
+
             tx.commit();
         } catch (Throwable e) {
             e.printStackTrace();
