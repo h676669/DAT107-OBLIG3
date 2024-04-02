@@ -17,8 +17,8 @@ public class Prosjekt {
     @OneToMany(mappedBy = "prosjekt") // Corrected mapping field name
     private List<ProsjektDeltagelse> ProsjektListe;
 
-    public Prosjekt(){
-        
+    public Prosjekt() {
+
     }
 
 }

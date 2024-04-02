@@ -25,20 +25,14 @@ public class Ansatt {
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
     @ManyToOne
-    @JoinColumn(name ="avdeling_id")
+    @JoinColumn(name = "avdeling_id")
     private Avdeling avdeling_id;
     private int prosjektdeltagelse;
 
-    public String getFornavn() {
-        return fornavn;
-    }
-
-    public String getEtternavn() {
-        return etternavn;
-    }
-    public Ansatt(){
+    public Ansatt() {
 
     }
+
     public Ansatt(String brukernavn, String fornavn,
                   String etternavn, String stilling, Date ansettelsesDato,
                   Double manedslonn, int avdelingID, int prosjektdeltagelse) {
@@ -50,6 +44,22 @@ public class Ansatt {
         this.manedslonn = manedslonn;
         setAvdelingID(avdelingID);
         this.prosjektdeltagelse = prosjektdeltagelse;
+    }
+
+    public String getFornavn() {
+        return fornavn;
+    }
+
+    public void setFornavn(String fornavn) {
+        this.fornavn = fornavn;
+    }
+
+    public String getEtternavn() {
+        return etternavn;
+    }
+
+    public void setEtternavn(String etternavn) {
+        this.etternavn = etternavn;
     }
 
     public int getAnsattID() {
@@ -66,14 +76,6 @@ public class Ansatt {
 
     public void setBrukernavn(String brukernavn) {
         this.brukernavn = brukernavn;
-    }
-
-    public void setFornavn(String fornavn) {
-        this.fornavn = fornavn;
-    }
-
-    public void setEtternavn(String etternavn) {
-        this.etternavn = etternavn;
     }
 
     public String getStilling() {
@@ -108,7 +110,7 @@ public class Ansatt {
         this.ansatt_id = ansatt_id;
     }
 
-    public Avdeling getAvdeling(){
+    public Avdeling getAvdeling() {
         return avdeling_id;
     }
 
