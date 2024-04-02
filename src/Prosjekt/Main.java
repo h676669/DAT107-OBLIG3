@@ -81,7 +81,7 @@ public class Main {
             }
             case 4 -> {
                 ansattDAO = new AnsattDAO();
-                System.out.println("Skriv in ansatt ID:");
+                System.out.println("Skriv inn ansatt ID:");
                 int id = scanner.nextInt();
                 System.out.println();
                 System.out.println("Oppdater:");
@@ -97,7 +97,7 @@ public class Main {
                         ansattDAO.close();
                     }
                     case 2 -> {
-                        System.out.println("SKriv inn ny lønn");
+                        System.out.println("Skriv inn ny lønn");
                         ansattDAO.oppdaterAnsatt(id, scanner.nextDouble());
                         avdelingDAO.close();
                         ansattDAO.close();
