@@ -12,7 +12,7 @@ import java.util.List;
 public class Ansatt {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ansatt_id;
 
     @Column(columnDefinition = "TEXT")
@@ -25,9 +25,9 @@ public class Ansatt {
     @OneToMany(mappedBy = "ansatt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
-    @OneToOne(mappedBy = "avdeling")
+    @ManyToOne
     @JoinColumn(name = "avdeling_id")
-    private int avdeling_id;
+    private Avdeling avdeling_id;
     private int prosjektdeltagelse;
 
     public Ansatt() {

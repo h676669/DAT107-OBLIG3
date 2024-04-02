@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -114,13 +115,10 @@ public class Main {
             case 5 -> {
                 ansattDAO = new AnsattDAO();
                 avdelingDAO = new AvdelingDAO();
+                Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1), 1);
+                nyAnsatt.setAnsettelsesDato(new Date());
+                ansattDAO.leggTilNyAnsatt(nyAnsatt);
 
-                ansattDAO.leggTilNyAnsatt(new Ansatt("Geir",
-                        "Trolldeig",
-                        "Stein",
-                        "Konduktør",
-                        529.30, avdelingDAO.finnAvdelingMedId(1),
-                        1));
                 avdelingDAO.close();
                 ansattDAO.close();
             }
