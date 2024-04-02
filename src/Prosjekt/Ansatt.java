@@ -126,4 +126,14 @@ public class Ansatt {
         this.prosjektdeltagelse = prosjektdeltagelse;
     }
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder("ID: ");
+        sb.append(ansatt_id);
+        sb.append(", Fornavn: ");
+        sb.append(fornavn);
+        sb.append(", Etternavn: ");
+        sb.append(etternavn);
+        return sb.toString();
+    }
+
 }
