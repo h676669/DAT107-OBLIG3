@@ -36,4 +36,13 @@ public class ProsjektDeltagelse {
     public void setPRolle(String pRolle) {
         this.p_rolle = pRolle;
     }
+    public ProsjektDeltagelse(){
+
+    }
+    public ProsjektDeltagelse(int prosjektdeltagelse_id, String p_rolle, Ansatt ansatt, Prosjekt prosjekt){
+        this.p_rolle = p_rolle;
+        this.prosjekt = prosjekt;
+        this.prosjektdeltagelse_id = prosjektdeltagelse_id;
+        this.ansatt = ansatt;
+    }
 }
