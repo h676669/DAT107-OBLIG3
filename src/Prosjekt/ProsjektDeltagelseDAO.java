@@ -45,7 +45,9 @@ public class ProsjektDeltagelseDAO {
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            finnProsjektDeltagelse(id).setTimer(finnProsjektDeltagelse(id).getTimer() + timer);
+            ProsjektDeltagelse managedProsjketdeltagelse = finnProsjektDeltagelse(id);
+            managedProsjketdeltagelse.setTimer(managedProsjketdeltagelse.getTimer() + timer);
+            em.merge(managedProsjketdeltagelse);
             tx.commit();
         } catch (Throwable throwable) {
             if (tx.isActive()) {
