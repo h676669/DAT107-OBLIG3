@@ -32,11 +32,11 @@ public class AvdelingDAO {
         }
     }
 
-    public void lagreNyAvdeling(int avdeling_id, String avdeling_navn) {
+    public void lagreNyAvdeling(String avdeling_navn) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
-            if(finnAvdelingMedId(avdeling_id) == null){
+
                 tx.begin();
                 AnsattDAO skalBliSjef = new AnsattDAO();
 
@@ -59,10 +59,6 @@ public class AvdelingDAO {
                 Avdeling nyAvdeling = new Avdeling(avdeling_navn,nyeAnsatte,nySjefID);
                 em.persist(nyAvdeling);
                 tx.commit();
-            }
-            else {
-                throw new Exception("Avdeling id finnes allerede");
-            }
         } catch (Throwable e) {
             e.printStackTrace();
             if (tx.isActive()) {
