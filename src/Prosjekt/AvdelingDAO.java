@@ -79,7 +79,9 @@ public class AvdelingDAO {
             em.close();
         }
     }
-    public boolean leggTilAnsatt(Ansatt nyAnsatt, int avdeling_id) {
+    public void leggTilAnsatt(Ansatt nyAnsatt, int avdeling_id) {
+
+
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
@@ -93,7 +95,6 @@ public class AvdelingDAO {
                 alleAnsatteAvdeling.add(nyAnsatt);
                 nyAnsatt.setAvdelingID(avdeling_id);
                 oppdaterAvdeling(avdeling_id,alleAnsatteAvdeling,managedAvdeling.getAvdelingsnavn(),managedAvdeling.getLe_boss_id());
-                return true;
             }
             tx.commit();
         }
@@ -106,7 +107,6 @@ public class AvdelingDAO {
         finally {
             em.close();
         }
-        return false;
     }
     public void oppdaterAvdeling(int avdeling_id,List<Ansatt> nyeAnsatte,String navn, int Sjef_id ){
         EntityManager em = emf.createEntityManager();
