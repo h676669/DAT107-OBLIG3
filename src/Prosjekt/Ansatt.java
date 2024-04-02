@@ -25,9 +25,9 @@ public class Ansatt {
     @OneToMany(mappedBy = "ansatt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
-    @ManyToOne
+    @OneToOne(mappedBy = "avdeling")
     @JoinColumn(name = "avdeling_id")
-    private Avdeling avdeling_id;
+    private int avdeling_id;
     private int prosjektdeltagelse;
 
     public Ansatt() {

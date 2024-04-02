@@ -44,7 +44,7 @@ CREATE TABLE ProsjektDeltagelse
 
 ALTER TABLE Ansatt
     ADD CONSTRAINT fk_prosjekt FOREIGN KEY (prosjektdeltagelse) REFERENCES ProsjektDeltagelse (pd_id);
-ALTER TABLE Avdeling
+ALTER TABLE Ansatt
     ADD CONSTRAINT fk_avdeling FOREIGN KEY (avdeling_id) REFERENCES Avdeling (avdeling_id) ON DELETE RESTRICT;
 ALTER TABLE Avdeling
     ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_ansatt) REFERENCES Ansatt (ansatt_id);
