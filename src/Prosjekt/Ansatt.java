@@ -46,6 +46,7 @@ public class Ansatt {
         this.prosjektdeltagelse = prosjektdeltagelse;
     }
 
+
     public String getFornavn() {
         return fornavn;
     }
