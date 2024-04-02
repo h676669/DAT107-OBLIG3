@@ -79,6 +79,53 @@ public class AvdelingDAO {
             em.close();
         }
     }
+    public boolean leggTilAnsatt(Ansatt nyAnsatt, int avdeling_id) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            AnsattDAO ansattDAO = new AnsattDAO();
+            List<Ansatt> AlleAnsatte = ansattDAO.finnAlleAnsatt();
+
+            if (nyAnsatt.getAnsattID() != finnAvdelingMedId(nyAnsatt.getAvdeling().getAvdelingID()).getLe_boss_id()){
+                Avdeling managedAvdeling = finnAvdelingMedId(avdeling_id);
+                List<Ansatt> alleAnsatteAvdeling = managedAvdeling.getAvdelingAnsatt();
+                alleAnsatteAvdeling.add(nyAnsatt);
+                oppdaterAvdeling(avdeling_id,alleAnsatteAvdeling,managedAvdeling.getAvdelingsnavn(),managedAvdeling.getLe_boss_id());
+                return true;
+            }
+            tx.commit();
+        }
+        catch (Throwable throwable){
+            throwable.printStackTrace();
+            if (tx.isActive()){
+                tx.rollback();
+            }
+        }
+        finally {
+            em.close();
+        }
+        return false;
+    }
+    public void oppdaterAvdeling(int avdeling_id,List<Ansatt> nyeAnsatte,String navn, int Sjef_id ){
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            Avdeling managedAvdeling = finnAvdelingMedId(avdeling_id);
+            managedAvdeling.setAvdelingAnsatt(nyeAnsatte);
+            managedAvdeling.setAvdelingsnavn(navn);
+            managedAvdeling.setLe_boss_id(Sjef_id);
+            tx.commit();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+        } finally {
+            em.close();
+        }
+    }
 
     public void close() {
         if (emf != null) {
