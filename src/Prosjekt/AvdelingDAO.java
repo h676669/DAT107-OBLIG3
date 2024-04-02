@@ -9,10 +9,11 @@ import java.util.List;
 public class AvdelingDAO {
     private EntityManagerFactory emf;
 
-    public AvdelingDAO(){
+    public AvdelingDAO() {
         emf = Persistence.createEntityManagerFactory("Avdeling");
     }
-    public Avdeling finnAvdelingMedId(int id){
+
+    public Avdeling finnAvdelingMedId(int id) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.find(Avdeling.class, id);
@@ -20,18 +21,18 @@ public class AvdelingDAO {
             em.close();
         }
     }
-    public List<Avdeling> finnAlleAvdelinger(){
+
+    public List<Avdeling> finnAlleAvdelinger() {
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Avdeling> query = em.createQuery("select t from Avdeling t", Avdeling.class);
             return query.getResultList();
-        }
-        finally {
-        em.close();
+        } finally {
+            em.close();
         }
     }
 
-    public void lagreNyAvdeling(int avdeling_id,String avdeling_navn){
+    public void lagreNyAvdeling(int avdeling_id, String avdeling_navn) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
@@ -59,27 +60,26 @@ public class AvdelingDAO {
                 em.persist(nyAvdeling);
                 tx.commit();
             }
-        }
-        catch (Throwable e){
+        } catch (Throwable e) {
             e.printStackTrace();
-            if(tx.isActive()){
+            if (tx.isActive()) {
                 tx.rollback();
             }
-        }
-        finally {
+        } finally {
             em.close();
         }
     }
-    public void skrivUtAlleAnsatteAvdeling(int id){
+
+    public void skrivUtAlleAnsatteAvdeling(int id) {
         EntityManager em = emf.createEntityManager();
         try {
-           Avdeling managedAvdeling = finnAvdelingMedId(id);
-           managedAvdeling.skrivUtAlleAnsatt();
-        }
-        finally {
-        em.close();
+            Avdeling managedAvdeling = finnAvdelingMedId(id);
+            managedAvdeling.skrivUtAlleAnsatt();
+        } finally {
+            em.close();
         }
     }
+
     public void close() {
         if (emf != null) {
             emf.close();

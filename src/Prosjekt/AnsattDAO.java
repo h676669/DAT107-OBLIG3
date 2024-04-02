@@ -26,27 +26,29 @@ public class AnsattDAO {
             em.close();
         }
     }
+
     public Ansatt finnAnsattMedBrukernavn(String brukernavn) {
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Ansatt> query = em.createQuery("select t from Ansatt t where t.brukernavn like :brukernavn", Ansatt.class);
-            query.setParameter("brukernavn",brukernavn);
+            query.setParameter("brukernavn", brukernavn);
             return query.getSingleResult(); // NB! Exception hvis ingen eller flere resultater
         } finally {
             em.close();
         }
     }
-    public List<Ansatt> finnAlleAnsatt(){
+
+    public List<Ansatt> finnAlleAnsatt() {
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Ansatt> query = em.createQuery("select t from Ansatt t", Ansatt.class);
             return query.getResultList();
-        }
-        finally {
+        } finally {
             em.close();
         }
     }
-    public void oppdaterAnsatt(int id, String stilling, double lonn,int avdeling){
+
+    public void oppdaterAnsatt(int id, String stilling, double lonn, int avdeling) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
@@ -54,21 +56,20 @@ public class AnsattDAO {
             Ansatt managedAnsatt = finnAnsattMedId(id);
             managedAnsatt.setManedslonn(lonn);
             managedAnsatt.setStilling(stilling);
-            if (managedAnsatt.getAnsatt_id() != managedAnsatt.getAvdeling().getLe_boss_id()){
+            if (managedAnsatt.getAnsatt_id() != managedAnsatt.getAvdeling().getLe_boss_id()) {
                 managedAnsatt.setAvdelingID(avdeling);
             }
             tx.commit();
-        }
-        catch (Throwable e){
+        } catch (Throwable e) {
             e.printStackTrace();
-            if(tx.isActive()){
+            if (tx.isActive()) {
                 tx.rollback();
             }
-        }
-        finally {
+        } finally {
             em.close();
         }
     }
+
     public void close() {
         if (emf != null) {
             emf.close();
@@ -85,7 +86,7 @@ public class AnsattDAO {
 
         } catch (Throwable e) {
             e.printStackTrace();
-            if(tx.isActive()){
+            if (tx.isActive()) {
                 tx.rollback();
             }
         } finally {

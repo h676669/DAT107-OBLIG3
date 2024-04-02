@@ -29,7 +29,8 @@ public class Avdeling {
         le_boss_id = leBossId;
     }
 
-    public Avdeling() {}
+    public Avdeling() {
+    }
 
     public int getAvdelingID() {
         return avdeling_id;
@@ -62,14 +63,14 @@ public class Avdeling {
     public void setLe_boss_id(int le_boss_id) {
         this.le_boss_id = le_boss_id;
     }
-    public void skrivUtAlleAnsatt(){
+
+    public void skrivUtAlleAnsatt() {
         System.out.println("Ansatt ID | Navn");
-        for (Ansatt ansatt : avdeling_ansatt){
-            if (ansatt.getAnsatt_id()!= le_boss_id){
-                System.out.println(ansatt.getAnsatt_id() +": " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
-            }
-            else {
-                System.out.println(ansatt.getAnsatt_id() +": " + ansatt.getFornavn() + " " + ansatt.getEtternavn() +" SJEF!");
+        for (Ansatt ansatt : avdeling_ansatt) {
+            if (ansatt.getAnsatt_id() != le_boss_id) {
+                System.out.println(ansatt.getAnsatt_id() + ": " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+            } else {
+                System.out.println(ansatt.getAnsatt_id() + ": " + ansatt.getFornavn() + " " + ansatt.getEtternavn() + " SJEF!");
             }
         }
     }
