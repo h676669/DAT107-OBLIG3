@@ -8,34 +8,6 @@ public class Main {
 
         meny();
 
-        /*AnsattDAO ansattDAO = new AnsattDAO();
-        AvdelingDAO avdelingDAO = new AvdelingDAO();
-
-
-        try {
-            int avdelingID = 1;
-            Avdeling avdeling= avdelingDAO.finnAvdelingMedId(avdelingID);
-
-            if (avdeling != null) {
-                System.out.println("Found avdeling: " + avdeling.getAvdelingsnavn());
-            } else {
-                System.out.println("Avdeling with ID " + avdelingID + " not found.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            avdelingDAO.close();
-        }
-        //må gjøre dette siden han blir .close() over
-        avdelingDAO = new AvdelingDAO();
-        try {
-            int avdelingID = 1;
-            avdelingDAO.skrivUtAlleAnsatteAvdeling(avdelingID);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            avdelingDAO.close();
-        }*/
     }
 
 
@@ -67,28 +39,41 @@ public class Main {
             }
         } while (valg < 1 || valg > 5);
 
-        String tekst = switch (valg) {
-            case 1 -> "Skriv inn ansatt ID";
-            case 2 -> "Omg!";
-            case 3 -> "Omg!!";
-            case 4 -> "Omg!!!";
-            case 5 -> "Omg!!!!";
-            default -> "wtf";
-        };
-        System.out.println(tekst);
-
-        int id;
-        while (!scanner.hasNextInt()) {
-            scanner.next();
-            System.out.println("Skriv ett heltall!");
-        }
-        id = scanner.nextInt();
-
         // metodekall her
         switch (valg) {
-            case 1 -> sokEtterAnsatt(ansattDAO, id);
-            case 2 -> System.out.println("todo");
-            case 3 -> System.out.println("todo");
+            case 1 -> {
+                System.out.println("Skriv inn ansatt ID");
+                int id;
+                while (!scanner.hasNextInt()) {
+                    scanner.next();
+                    System.out.println("Skriv ett heltall!");
+                }
+                id = scanner.nextInt();
+                sokEtterAnsatt(ansattDAO, id);
+            }
+            case 2 -> {
+                System.out.println("Skriv inn avdeling ID");
+                int id;
+                while (!scanner.hasNextInt()) {
+                    scanner.next();
+                    System.out.println("Skriv ett heltall!");
+                }
+                id = scanner.nextInt();
+                sokAvdeling(avdelingDAO, id);
+            }
+            case 3 -> {
+                ansattDAO = new AnsattDAO();
+                try {
+                    for (Ansatt a : ansattDAO.finnAlleAnsatt()) {
+                        System.out.println(a.toString());
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    avdelingDAO.close();
+                }
+            }
             case 4 -> System.out.println("todo");
             case 5 -> System.out.println("todo");
             default -> System.out.println("todo");
@@ -97,9 +82,9 @@ public class Main {
         System.out.println("Trykk ein tast for å avslutta");
         scanner.nextLine();
         scanner.nextLine(); // dette er ikke en feil
-    }
 
-    private static void sokEtterAnsatt(AnsattDAO ansattDAO, int id) {
+    }
+    private static void sokEtterAnsatt (AnsattDAO ansattDAO,int id){
         try {
             ansattDAO = new AnsattDAO();
             int ansattId = id;
@@ -117,5 +102,21 @@ public class Main {
         }
     }
 
+    private static void sokAvdeling (AvdelingDAO avdelingDAO,int id){
+        try {
+            avdelingDAO = new AvdelingDAO();
+            int avdelingID = id;
+            Avdeling avdeling = avdelingDAO.finnAvdelingMedId(avdelingID);
 
+            if (avdeling != null) {
+                System.out.println("Found avdeling: " + avdeling.getAvdelingsnavn());
+            } else {
+                System.out.println("Avdeling with ID " + avdelingID + " not found.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            avdelingDAO.close();
+        }
+    }
 }
