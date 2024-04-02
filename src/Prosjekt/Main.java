@@ -102,7 +102,7 @@ public class Main {
             }
             case 5 -> {
                 ansattDAO = new AnsattDAO();
-                ansattDAO.leggTilNyAnsatt(new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, 2, 1));
+                ansattDAO.leggTilNyAnsatt(new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(2), 1));
             }
             default -> System.out.println("todo");
         }

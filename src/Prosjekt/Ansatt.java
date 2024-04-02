@@ -36,13 +36,13 @@ public class Ansatt {
 
     public Ansatt(String brukernavn, String fornavn,
                   String etternavn, String stilling,
-                  Double manedslonn, int avdelingID, int prosjektdeltagelse) {
+                  Double manedslonn, Avdeling avdeling, int prosjektdeltagelse) {
         this.etternavn = etternavn;
         this.fornavn = fornavn;
         this.brukernavn = brukernavn;
         this.stilling = stilling;
         this.manedslonn = manedslonn;
-        setAvdelingID(avdelingID);
+        this.avdeling_id = avdeling;
         this.prosjektdeltagelse = prosjektdeltagelse;
     }
 
@@ -117,6 +117,10 @@ public class Ansatt {
 
     public void setAvdelingID(int avdeling_id) {
         this.avdeling_id.setAvdelingID(avdeling_id);
+    }
+
+    public void setAvdeling(Avdeling avdeling) {
+        this.avdeling_id = avdeling;
     }
 
     public int getProsjektdeltagelseID() {
