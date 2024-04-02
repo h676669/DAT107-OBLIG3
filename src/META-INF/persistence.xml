@@ -40,7 +40,7 @@
             <property name="eclipselink.logging.level" value="WARNING"/>
         </properties>
     </persistence-unit>
-    <persistence-unit name="Prosjekt" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="ProsjektDeltagelse" transaction-type="RESOURCE_LOCAL">
 
         <class>Prosjekt.Avdeling</class>
         <class>Prosjekt.Ansatt</class>
