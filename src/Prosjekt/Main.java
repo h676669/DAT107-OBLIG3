@@ -48,17 +48,12 @@ public class Main {
                     System.out.println("Skriv ett heltall!");
                 }
                 id = scanner.nextInt();
-                sokEtterAnsatt(ansattDAO, id);
+                sokEtterAnsattID(ansattDAO, id);
             }
             case 2 -> {
-                System.out.println("Skriv inn avdeling ID");
-                int id;
-                while (!scanner.hasNextInt()) {
-                    scanner.next();
-                    System.out.println("Skriv ett heltall!");
-                }
-                id = scanner.nextInt();
-                sokAvdeling(avdelingDAO, id);
+                System.out.println("Skriv inn ansattes initialer");
+                String initial = scanner.next();
+                sokEtterAnsattInitial(ansattDAO, initial);
             }
             case 3 -> {
                 ansattDAO = new AnsattDAO();
@@ -83,17 +78,34 @@ public class Main {
         scanner.nextLine(); // dette er ikke en feil
 
     }
-    private static void sokEtterAnsatt (AnsattDAO ansattDAO,int id){
+    private static void sokEtterAnsattID (AnsattDAO ansattDAO,int id){
         try {
             ansattDAO = new AnsattDAO();
-            int ansattId = id;
-            Ansatt ansatt = ansattDAO.finnAnsattMedId(ansattId);
+            Ansatt ansatt = ansattDAO.finnAnsattMedId(id);
 
             if (ansatt != null) {
                 System.out.println("Found ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
             } else {
-                System.out.println("Ansatt with ID " + ansattId + " not found.");
+                System.out.println("Ansatt with ID " + id + " not found.");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ansattDAO.close();
+        }
+    }
+
+    private static void sokEtterAnsattInitial (AnsattDAO ansattDAO, String initialer) {
+        try {
+            ansattDAO = new AnsattDAO();
+            Ansatt ansatt = ansattDAO.finnAnsattMedBrukernavn(initialer);
+
+            if (ansatt != null) {
+                System.out.println("Found ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+            } else {
+                System.out.println("Ansatt with initials " + initialer + " not found.");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
