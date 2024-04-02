@@ -115,12 +115,12 @@ public class Ansatt {
         return avdeling_id;
     }
 
-    public void setAvdelingID(int avdeling_id) {
-        this.avdeling_id.setAvdelingID(avdeling_id);
-    }
-
     public void setAvdeling(Avdeling avdeling) {
         this.avdeling_id = avdeling;
+    }
+
+    public void setAvdelingID(int avdeling_id) {
+        this.avdeling_id.setAvdelingID(avdeling_id);
     }
 
     public int getProsjektdeltagelseID() {

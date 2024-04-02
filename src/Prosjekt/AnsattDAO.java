@@ -75,14 +75,17 @@ public class AnsattDAO {
         Ansatt ansatt = finnAnsattMedId(id);
         oppdaterAnsatt(id, stilling, ansatt.getManedslonn(), ansatt.getAvdeling().getAvdelingID());
     }
+
     public void oppdaterAnsatt(int id, double lonn) {
         Ansatt ansatt = finnAnsattMedId(id);
         oppdaterAnsatt(id, ansatt.getStilling(), lonn, ansatt.getAvdeling().getAvdelingID());
     }
+
     public void oppdaterAnsatt(int id, String stilling, double lonn) {
         Ansatt ansatt = finnAnsattMedId(id);
         oppdaterAnsatt(id, stilling, lonn, ansatt.getAvdeling().getAvdelingID());
     }
+
     public void oppdaterAnsatt(int id, int avdelingID) {
         Ansatt ansatt = finnAnsattMedId(id);
         oppdaterAnsatt(id, ansatt.getStilling(), ansatt.getManedslonn(), avdelingID);

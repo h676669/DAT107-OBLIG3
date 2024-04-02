@@ -37,28 +37,28 @@ public class AvdelingDAO {
         EntityTransaction tx = em.getTransaction();
         try {
 
-                tx.begin();
-                AnsattDAO skalBliSjef = new AnsattDAO();
+            tx.begin();
+            AnsattDAO skalBliSjef = new AnsattDAO();
 
-                List<Ansatt> AlleAnsatte = skalBliSjef.finnAlleAnsatt();
-                int nySjefID = 0;
-                Ansatt sjef = null;
+            List<Ansatt> AlleAnsatte = skalBliSjef.finnAlleAnsatt();
+            int nySjefID = 0;
+            Ansatt sjef = null;
 
-                for (Ansatt nySjef : AlleAnsatte){
-                    if(nySjef != null && nySjef.getAnsatt_id() != finnAvdelingMedId(nySjef.getAnsatt_id()).getLe_boss_id()){
-                        nySjefID = nySjef.getAnsatt_id();
-                        sjef = nySjef;
-                        break;
-                    }
+            for (Ansatt nySjef : AlleAnsatte) {
+                if (nySjef != null && nySjef.getAnsatt_id() != finnAvdelingMedId(nySjef.getAnsatt_id()).getLe_boss_id()) {
+                    nySjefID = nySjef.getAnsatt_id();
+                    sjef = nySjef;
+                    break;
                 }
-                List<Ansatt> nyeAnsatte = new ArrayList<>();
-                if(sjef != null){
-                    nyeAnsatte.add(sjef);
-                }
+            }
+            List<Ansatt> nyeAnsatte = new ArrayList<>();
+            if (sjef != null) {
+                nyeAnsatte.add(sjef);
+            }
 
-                Avdeling nyAvdeling = new Avdeling(avdeling_navn,nyeAnsatte,nySjefID);
-                em.persist(nyAvdeling);
-                tx.commit();
+            Avdeling nyAvdeling = new Avdeling(avdeling_navn, nyeAnsatte, nySjefID);
+            em.persist(nyAvdeling);
+            tx.commit();
         } catch (Throwable e) {
             e.printStackTrace();
             if (tx.isActive()) {
@@ -78,6 +78,7 @@ public class AvdelingDAO {
             em.close();
         }
     }
+
     public void leggTilAnsatt(Ansatt nyAnsatt, int avdeling_id) {
 
         EntityManager em = emf.createEntityManager();
@@ -87,26 +88,25 @@ public class AvdelingDAO {
             AnsattDAO ansattDAO = new AnsattDAO();
             List<Ansatt> AlleAnsatte = ansattDAO.finnAlleAnsatt();
 
-            if (nyAnsatt.getAnsattID() != finnAvdelingMedId(nyAnsatt.getAvdeling().getAvdelingID()).getLe_boss_id()){
+            if (nyAnsatt.getAnsattID() != finnAvdelingMedId(nyAnsatt.getAvdeling().getAvdelingID()).getLe_boss_id()) {
                 Avdeling managedAvdeling = finnAvdelingMedId(avdeling_id);
                 List<Ansatt> alleAnsatteAvdeling = managedAvdeling.getAvdelingAnsatt();
                 alleAnsatteAvdeling.add(nyAnsatt);
                 nyAnsatt.setAvdelingID(avdeling_id);
-                oppdaterAvdeling(avdeling_id,alleAnsatteAvdeling,managedAvdeling.getAvdelingsnavn(),managedAvdeling.getLe_boss_id());
+                oppdaterAvdeling(avdeling_id, alleAnsatteAvdeling, managedAvdeling.getAvdelingsnavn(), managedAvdeling.getLe_boss_id());
             }
             tx.commit();
-        }
-        catch (Throwable throwable){
+        } catch (Throwable throwable) {
             throwable.printStackTrace();
-            if (tx.isActive()){
+            if (tx.isActive()) {
                 tx.rollback();
             }
-        }
-        finally {
+        } finally {
             em.close();
         }
     }
-    public void oppdaterAvdeling(int avdeling_id,List<Ansatt> nyeAnsatte,String navn, int Sjef_id ){
+
+    public void oppdaterAvdeling(int avdeling_id, List<Ansatt> nyeAnsatte, String navn, int Sjef_id) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {

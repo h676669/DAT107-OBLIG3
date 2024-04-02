@@ -13,7 +13,7 @@ public class ProsjektDAO {
         emf = Persistence.createEntityManagerFactory("Prosjekt");
     }
 
-    public void lagreNyttProsjekt(String prosjektNavn, String prosjekt_beskrivelse, List<ProsjektDeltagelse> prosjektliste){
+    public void lagreNyttProsjekt(String prosjektNavn, String prosjekt_beskrivelse, List<ProsjektDeltagelse> prosjektliste) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -30,6 +30,7 @@ public class ProsjektDAO {
             em.close();
         }
     }
+
     public Prosjekt finnProsjektMedId(int id) {
         EntityManager em = emf.createEntityManager();
         try {
