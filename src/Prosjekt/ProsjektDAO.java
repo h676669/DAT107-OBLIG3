@@ -1,9 +1,6 @@
 package Prosjekt;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -16,6 +13,23 @@ public class ProsjektDAO {
         emf = Persistence.createEntityManagerFactory("Prosjekt");
     }
 
+    public void lagreNyttProsjekt(String prosjektNavn, String prosjekt_beskrivelse, List<ProsjektDeltagelse> prosjektliste){
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try {
+            tx.begin();
+            em.persist(new Prosjekt(prosjekt_beskrivelse, prosjektNavn, prosjektliste));
+            tx.commit();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+        } finally {
+            em.close();
+        }
+    }
     public Prosjekt finnProsjektMedId(int id) {
         EntityManager em = emf.createEntityManager();
         try {

@@ -52,8 +52,7 @@ public class Prosjekt {
     public Prosjekt() {
 
     }
-    public Prosjekt(int prosjekt_id,String prosjekt_beskrivelse, String prosjekt_navn, List<ProsjektDeltagelse> prosjektListe){
-        this.prosjekt_id = prosjekt_id;
+    public Prosjekt(String prosjekt_beskrivelse, String prosjekt_navn, List<ProsjektDeltagelse> prosjektListe){
         this.prosjekt_beskrivelse = prosjekt_beskrivelse;
         this.prosjekt_navn = prosjekt_navn;
         this.prosjektListe = prosjektListe;

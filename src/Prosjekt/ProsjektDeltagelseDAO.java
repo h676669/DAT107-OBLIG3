@@ -18,6 +18,7 @@ public class ProsjektDeltagelseDAO {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
+            tx.begin();
             em.persist(new ProsjektDeltagelse(rolle, ansatt, prosjekt, timer));
             tx.commit();
         } catch (Throwable e) {
