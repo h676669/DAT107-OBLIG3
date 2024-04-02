@@ -86,21 +86,23 @@ public class Main {
                     case 1 -> {
                         System.out.println("Skriv inn ny stilling");
 
-                        ansattDAO.oppdaterAnsatt(id, scanner.nextLine());
+                        ansattDAO.oppdaterAnsatt(id, scanner.next());
                     }
                     case 2 -> {
                         System.out.println("SKriv inn ny lønn");
-                        ansattDAO.oppdaterAnsatt(id, scanner.nextLine());
+                        ansattDAO.oppdaterAnsatt(id, scanner.nextDouble());
                     }
                     case 3 -> {
                         System.out.println("Skriv inn ny stilling og deretter lønn");
-                        ansattDAO.oppdaterAnsatt(id, scanner.nextLine(), scanner.nextInt());
+                        ansattDAO.oppdaterAnsatt(id, scanner.next(), scanner.nextDouble());
                     }
+
                 }
 
             }
             case 5 -> {
-
+                ansattDAO = new AnsattDAO();
+                ansattDAO.leggTilNyAnsatt(new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, 2, 1));
             }
             default -> System.out.println("todo");
         }

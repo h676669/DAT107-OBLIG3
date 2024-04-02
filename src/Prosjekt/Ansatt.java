@@ -18,6 +18,7 @@ public class Ansatt {
     @Column(columnDefinition = "TEXT")
     private String brukernavn, fornavn, etternavn, stilling;
 
+
     @Temporal(TemporalType.DATE)
     private Date ansettelsesDato; //?
     private double manedslonn;
@@ -34,13 +35,12 @@ public class Ansatt {
     }
 
     public Ansatt(String brukernavn, String fornavn,
-                  String etternavn, String stilling, Date ansettelsesDato,
+                  String etternavn, String stilling,
                   Double manedslonn, int avdelingID, int prosjektdeltagelse) {
         this.etternavn = etternavn;
         this.fornavn = fornavn;
         this.brukernavn = brukernavn;
         this.stilling = stilling;
-        this.ansettelsesDato = ansettelsesDato;
         this.manedslonn = manedslonn;
         setAvdelingID(avdelingID);
         this.prosjektdeltagelse = prosjektdeltagelse;
