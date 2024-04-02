@@ -46,6 +46,10 @@ public class ProsjektDeltagelseDAO {
             tx.begin();
             finnProsjektDeltagelse(id).setTimer(finnProsjektDeltagelse(id).getTimer() + timer);
             tx.commit();
+        } catch (Throwable throwable) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
         } finally {
             em.close();
         }
