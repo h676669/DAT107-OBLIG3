@@ -52,14 +52,6 @@ public class Ansatt {
         this.prosjektdeltagelse = prosjektdeltagelse;
     }
 
-    public int getAnsattID() {
-        return ansatt_id;
-    }
-
-    public void setAnsattID(int ansattID) {
-        this.ansatt_id = ansattID;
-    }
-
     public String getBrukernavn() {
         return brukernavn;
     }

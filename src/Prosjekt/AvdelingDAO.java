@@ -3,6 +3,7 @@ package Prosjekt;
 import jakarta.persistence.*;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AvdelingDAO {
@@ -34,10 +35,30 @@ public class AvdelingDAO {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
-            tx.begin();
-            
+            if(finnAvdelingMedId(avdeling_id) == null){
+                tx.begin();
+                AnsattDAO skalBliSjef = new AnsattDAO();
 
-            tx.commit();
+                List<Ansatt> AlleAnsatte = skalBliSjef.finnAlleAnsatt();
+                int nySjefID = 0;
+                Ansatt sjef = null;
+
+                for (Ansatt nySjef : AlleAnsatte){
+                    if(nySjef != null && nySjef.getAnsatt_id() != finnAvdelingMedId(nySjef.getAnsatt_id()).getLe_boss_id()){
+                        nySjefID = nySjef.getAnsatt_id();
+                        sjef = nySjef;
+                        break;
+                    }
+                }
+                List<Ansatt> nyeAnsatte = new ArrayList<>();
+                if(sjef != null){
+                    nyeAnsatte.add(sjef);
+                }
+
+                Avdeling nyAvdeling = new Avdeling(avdeling_id,avdeling_navn,nyeAnsatte,nySjefID);
+                em.persist(nyAvdeling);
+                tx.commit();
+            }
         }
         catch (Throwable e){
             e.printStackTrace();
