@@ -59,6 +59,7 @@ public class AnsattDAO {
             if (managedAnsatt.getAnsatt_id() != managedAnsatt.getAvdeling().getLe_boss_id()) {
                 managedAnsatt.setAvdelingID(avdeling);
             }
+            em.persist(managedAnsatt);
             tx.commit();
         } catch (Throwable e) {
             e.printStackTrace();
