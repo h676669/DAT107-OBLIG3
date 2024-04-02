@@ -56,9 +56,12 @@ public class AvdelingDAO {
                     nyeAnsatte.add(sjef);
                 }
 
-                Avdeling nyAvdeling = new Avdeling(avdeling_id,avdeling_navn,nyeAnsatte,nySjefID);
+                Avdeling nyAvdeling = new Avdeling(avdeling_navn,nyeAnsatte,nySjefID);
                 em.persist(nyAvdeling);
                 tx.commit();
+            }
+            else {
+                throw new Exception("Avdeling id finnes allerede");
             }
         } catch (Throwable e) {
             e.printStackTrace();
@@ -80,7 +83,6 @@ public class AvdelingDAO {
         }
     }
     public void leggTilAnsatt(Ansatt nyAnsatt, int avdeling_id) {
-
 
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();

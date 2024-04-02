@@ -22,8 +22,7 @@ public class Avdeling {
     @Column(columnDefinition = "INT")
     private int le_boss_id;
 
-    public Avdeling(int avdelingId, String avdelingNavn, List<Ansatt> avdelingAnsatt, int leBossId) {
-        avdeling_id = avdelingId;
+    public Avdeling(String avdelingNavn, List<Ansatt> avdelingAnsatt, int leBossId) {
         avdeling_navn = avdelingNavn;
         avdeling_ansatt = avdelingAnsatt;
         le_boss_id = leBossId;
