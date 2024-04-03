@@ -190,8 +190,8 @@ public class Main {
                     sumTimer += p.getTimer();
                     System.out.println(p.getAnsatt() + ".");
                     System.out.println(p.getP_rolle() + ".");
-                    System.out.println("Totalt antall timer: " + sumTimer + ".");
                 }
+                System.out.println("Totalt antall timer: " + sumTimer + ".");
             }
 
             default -> {
