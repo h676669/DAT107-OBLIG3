@@ -9,7 +9,7 @@ import java.util.List;
 @Table(schema = "Dat107Oblig3")
 public class Prosjekt {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int prosjekt_id;
 
     @Column(columnDefinition = "TEXT")

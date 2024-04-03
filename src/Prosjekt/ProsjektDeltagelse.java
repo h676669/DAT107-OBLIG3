@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 
 public class ProsjektDeltagelse {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int prosjektdeltagelse_id;
 
     @Column(columnDefinition = "TEXT")

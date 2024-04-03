@@ -13,7 +13,7 @@ public class ProsjektDAO {
         emf = Persistence.createEntityManagerFactory("Prosjekt");
     }
 
-    public void lagreNyttProsjekt(String prosjektNavn, String prosjekt_beskrivelse, List<ProsjektDeltagelse> prosjektliste) {
+    public void lagreNyttProsjekt(String prosjektNavn, String prosjekt_beskrivelse) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 

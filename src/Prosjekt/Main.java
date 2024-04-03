@@ -1,5 +1,4 @@
 package Prosjekt;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -138,7 +137,7 @@ public class Main {
             case 10 -> {
                 System.out.println();
                 ProsjektDAO prosjektDAO = new ProsjektDAO();
-                prosjektDAO.lagreNyttProsjekt("test", "Geir", new ArrayList<>());
+                prosjektDAO.lagreNyttProsjekt("test", "Geir");
             }
             case 11 -> {
                 Prosjekt testProsjekt = new Prosjekt();
