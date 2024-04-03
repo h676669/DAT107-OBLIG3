@@ -21,7 +21,7 @@ public class ProsjektDeltagelse {
     @JoinColumn(name = "pd_prosjekt")
     private Prosjekt prosjekt;
 
-    private int timer;
+    private int pd_timer;
 
     public ProsjektDeltagelse() {
 
@@ -31,7 +31,7 @@ public class ProsjektDeltagelse {
         this.pd_rolle = pd_rolle;
         this.prosjekt = prosjekt;
         this.ansatt = ansatt;
-        this.timer = 0;
+        this.pd_timer = 0;
     }
 
     public int getProsjektdeltagelse_id() {
@@ -67,10 +67,10 @@ public class ProsjektDeltagelse {
     }
 
     public int getTimer() {
-        return timer;
+        return pd_timer;
     }
 
     public void setTimer(int timer) {
-        this.timer = timer;
+        this.pd_timer = timer;
     }
 }
