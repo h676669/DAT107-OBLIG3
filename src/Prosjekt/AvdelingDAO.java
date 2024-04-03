@@ -51,13 +51,17 @@ public class AvdelingDAO {
                     break;
                 }
             }
+            Avdeling nyAvdeling = null;
             List<Ansatt> nyeAnsatte = new ArrayList<>();
             if (sjef != null) {
                 nyeAnsatte.add(sjef);
+                nyAvdeling = new Avdeling(avdeling_navn, nyeAnsatte, nySjefID);
+                sjef.setAvdeling(nyAvdeling);
+            }
+            if (nyAvdeling != null){
+                em.persist(nyAvdeling);
             }
 
-            Avdeling nyAvdeling = new Avdeling(avdeling_navn, nyeAnsatte, nySjefID);
-            em.persist(nyAvdeling);
             tx.commit();
         } catch (Throwable e) {
             e.printStackTrace();

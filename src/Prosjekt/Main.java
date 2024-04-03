@@ -113,6 +113,7 @@ public class Main {
                 System.out.println("Skriv inn ny avdeling Id");
                 int nyAvdeling = scanner.nextInt();
                 ansattDAO.oppdaterAnsatt(id, nyAvdeling);
+                avdelingDAO.leggTilAnsatt(ansattDAO.finnAnsattMedId(id),nyAvdeling);
             }
             case 9 -> {
                 System.out.println("Skriv inn ønsket navn på ny avdeling: ");
