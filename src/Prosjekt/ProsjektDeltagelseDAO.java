@@ -19,7 +19,10 @@ public class ProsjektDeltagelseDAO {
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            em.persist(new ProsjektDeltagelse(rolle, ansatt, prosjekt));
+            ProsjektDeltagelse pd = new ProsjektDeltagelse(rolle, ansatt, prosjekt);
+            em.persist(pd);
+            ansatt.getProsjektDeltagelseList().add(pd);
+            em.merge(ansatt);
             tx.commit();
         } catch (Throwable e) {
             e.printStackTrace();

@@ -8,8 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(schema = "Dat107Oblig3")
-
-
 public class Ansatt {
 
     @Id
@@ -34,9 +32,7 @@ public class Ansatt {
     @JoinColumn(name = "avdeling_id")
     private Avdeling avdeling_id;
 
-
     public Ansatt() {
-
     }
 
     public Ansatt(String brukernavn, String fornavn,
@@ -51,7 +47,6 @@ public class Ansatt {
         this.prosjektDeltagelse = new ArrayList<ProsjektDeltagelse>();
         this.ansettelsesDato = new Date();
     }
-
 
     public String getFornavn() {
         return fornavn;
@@ -137,9 +132,9 @@ public class Ansatt {
         return pDList;
     }
 
-   /* public void setProsjektdeltagelseID(int prosjektdeltagelse) {
-        this.prosjektdeltagelse = prosjektdeltagelse;
-    }*/
+    public List<ProsjektDeltagelse> getProsjektDeltagelseList() {
+        return prosjektDeltagelse;
+    }
 
     @Override
     public String toString() {
@@ -151,5 +146,4 @@ public class Ansatt {
         sb.append(etternavn);
         return sb.toString();
     }
-
 }
