@@ -140,10 +140,12 @@ public class Main {
                 prosjektDAO.lagreNyttProsjekt("test", "Geir");
             }
             case 11 -> {
-                Prosjekt testProsjekt = new Prosjekt();
-                Ansatt testAnsatt = new Ansatt("rmd", "Ronald", "McDonald", "The Burger King", 420.0 , avdelingDAO.finnAvdelingMedId(2));
+                ProsjektDAO prosjektDAO = new ProsjektDAO();
+                //Prosjekt testProsjekt = new Prosjekt();
+                //Ansatt testAnsatt = new Ansatt("rmd", "Ronald", "McDonald", "The Burger King", 420.0 , avdelingDAO.finnAvdelingMedId(2));
+
                 ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
-                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger", testAnsatt, testProsjekt);
+                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger",ansattDAO.finnAnsattMedId(1)  ,prosjektDAO.finnProsjektMedId(1));
             }
             case 12 -> {
                 ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();

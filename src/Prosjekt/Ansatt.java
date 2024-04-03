@@ -19,10 +19,11 @@ public class Ansatt {
     @Column(columnDefinition = "TEXT")
     private String brukernavn, fornavn, etternavn, stilling;
 
-
     @Temporal(TemporalType.DATE)
     private Date ansettelsesDato; //?
+
     private double manedslonn;
+
     @OneToMany(mappedBy = "ansatt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektDeltagelse;
 
