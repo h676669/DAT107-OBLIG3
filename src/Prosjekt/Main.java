@@ -178,8 +178,10 @@ public class Main {
                 int sumTimer = 0;
                 for (ProsjektDeltagelse p : prosjektDAO.finnProsjektMedId(pID).getProsjektListe()) {
                     sumTimer += p.getTimer();
-                    System.out.println(p.getAnsatt() + ".");
-                    System.out.println(p.getP_rolle() + ".");
+                    System.out.print(p.getAnsatt() + ", rolle: ");
+                    System.out.print(p.getP_rolle() + ", timer: ");
+                    System.out.print(p.getTimer());
+                    System.out.println();
                 }
                 System.out.println("Totalt antall timer: " + sumTimer + ".");
             }
