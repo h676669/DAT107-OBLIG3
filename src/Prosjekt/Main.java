@@ -87,14 +87,31 @@ public class Main {
                         ansattDAO.oppdaterAnsatt(id, scanner.nextDouble());
                     }
                     case 3 -> {
-                        System.out.println("Skriv inn ny stilling og deretter lønn:");
-                        ansattDAO.oppdaterAnsatt(id, scanner.next(), scanner.nextDouble());
+                        System.out.println("Skriv inn ny stilling og deretter lønn.");
+                        System.out.println("Stilling:");
+                        scanner.nextLine();
+                        String stilling = scanner.nextLine();
+                        System.out.println("Lønn:");
+                        double lonn = scanner.nextDouble();
+                        ansattDAO.oppdaterAnsatt(id, stilling, lonn);
                     }
                 }
             }
             case 5 -> {
-                System.out.println("Skriv inn følgende: Brukernavn(max 4 bokstaver), fornavn, etternavn, stilling, lønn: ");
-                Ansatt nyAnsatt = new Ansatt(scanner.next(), scanner.next(), scanner.next(), scanner.next(), scanner.nextDouble(), avdelingDAO.finnAvdelingMedId(1));
+                System.out.println("Skriv inn følgende: ");
+                scanner.nextLine();
+                System.out.println("Brukernavn(maks 4 bokstaver):");
+                String brukernavn = scanner.nextLine();
+                System.out.println("Fornavn:");
+                String fornavn = scanner.nextLine();
+                System.out.println("Etternavn:");
+                String etternavn = scanner.nextLine();
+                System.out.println("Stilling:");
+                String stilling = scanner.nextLine();
+                System.out.println("Lønn:");
+                double lonn = scanner.nextDouble();
+
+                Ansatt nyAnsatt = new Ansatt(brukernavn, fornavn, etternavn, stilling, lonn, avdelingDAO.finnAvdelingMedId(1));
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
                 System.out.println(nyAnsatt + " har blitt opprettet.");
             }
