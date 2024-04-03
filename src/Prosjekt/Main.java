@@ -1,25 +1,12 @@
 package Prosjekt;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         meny();
-
     }
-
-
-    //TODO alt
     public static void meny() {
-        EntityManagerFactory emf;
         AnsattDAO ansattDAO = new AnsattDAO();
         AvdelingDAO avdelingDAO = new AvdelingDAO();
 
@@ -71,7 +58,6 @@ public class Main {
                     for (Ansatt a : ansattDAO.finnAlleAnsatt()) {
                         System.out.println(a.toString());
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -79,6 +65,7 @@ public class Main {
             case 4 -> {
                 System.out.println("Skriv inn ansatt ID:");
                 int id = scanner.nextInt();
+                System.out.println(ansattDAO.finnAnsattMedId(id));
                 System.out.println();
                 System.out.println("Oppdater:");
                 System.out.println("1: Stilling");
@@ -97,9 +84,7 @@ public class Main {
                         System.out.println("Skriv inn ny stilling og deretter lønn");
                         ansattDAO.oppdaterAnsatt(id, scanner.next(), scanner.nextDouble());
                     }
-
                 }
-
             }
             case 5 -> {
                 System.out.println("Pray forgive me sensei, for this employee is but hardcoded.");
@@ -161,7 +146,6 @@ public class Main {
         try {
             ansattDAO = new AnsattDAO();
             Ansatt ansatt = ansattDAO.finnAnsattMedId(id);
-
             if (ansatt != null) {
                 System.out.println("Found ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
             } else {
@@ -178,13 +162,11 @@ public class Main {
         try {
             ansattDAO = new AnsattDAO();
             Ansatt ansatt = ansattDAO.finnAnsattMedBrukernavn(initialer);
-
             if (ansatt != null) {
                 System.out.println("Found ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
             } else {
                 System.out.println("Ansatt with initials " + initialer + " not found.");
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -195,13 +177,11 @@ public class Main {
     private static void sokAvdeling(AvdelingDAO avdelingDAO, int id) {
         try {
             avdelingDAO = new AvdelingDAO();
-            int avdelingID = id;
-            Avdeling avdeling = avdelingDAO.finnAvdelingMedId(avdelingID);
-
+            Avdeling avdeling = avdelingDAO.finnAvdelingMedId(id);
             if (avdeling != null) {
                 System.out.println("Found avdeling: " + avdeling.getAvdelingsnavn());
             } else {
-                System.out.println("Avdeling with ID " + avdelingID + " not found.");
+                System.out.println("Avdeling with ID " + id + " not found.");
             }
         } catch (Exception e) {
             e.printStackTrace();
