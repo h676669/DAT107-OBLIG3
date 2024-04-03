@@ -60,15 +60,11 @@ public class Main {
                 }
                 id = scanner.nextInt();
                 sokEtterAnsattID(ansattDAO, id);
-                avdelingDAO.close();
-                ansattDAO.close();
             }
             case 2 -> {
                 System.out.println("Skriv inn ansattes initialer");
                 String initial = scanner.next();
                 sokEtterAnsattInitial(ansattDAO, initial);
-                avdelingDAO.close();
-                ansattDAO.close();
             }
             case 3 -> {
                 ansattDAO = new AnsattDAO();
@@ -79,9 +75,6 @@ public class Main {
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                } finally {
-                    ansattDAO.close();
-                    avdelingDAO.close();
                 }
             }
             case 4 -> {
@@ -96,22 +89,15 @@ public class Main {
                 switch (scanner.nextInt()) {
                     case 1 -> {
                         System.out.println("Skriv inn ny stilling");
-
                         ansattDAO.oppdaterAnsatt(id, scanner.next());
-                        avdelingDAO.close();
-                        ansattDAO.close();
                     }
                     case 2 -> {
                         System.out.println("Skriv inn ny lønn");
                         ansattDAO.oppdaterAnsatt(id, scanner.nextDouble());
-                        avdelingDAO.close();
-                        ansattDAO.close();
                     }
                     case 3 -> {
                         System.out.println("Skriv inn ny stilling og deretter lønn");
                         ansattDAO.oppdaterAnsatt(id, scanner.next(), scanner.nextDouble());
-                        avdelingDAO.close();
-                        ansattDAO.close();
                     }
 
                 }
@@ -123,8 +109,6 @@ public class Main {
                 avdelingDAO = new AvdelingDAO();
                 Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1), 1);
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
-                avdelingDAO.close();
-                ansattDAO.close();
                 System.out.println(nyAnsatt + " har blitt opprettet");
             }
             case 6 -> {
@@ -149,8 +133,6 @@ public class Main {
                 System.out.println("Skriv inn ny avdeling Id");
                 int nyAvdeling = scanner.nextInt();
                 ansattDAO.oppdaterAnsatt(id, nyAvdeling);
-                avdelingDAO.close();
-                ansattDAO.close();
             }
             case 9 -> {
                 System.out.println("Skriv inn ønsket navn på ny avdeling: ");
@@ -168,10 +150,11 @@ public class Main {
                 }
             }
             default -> {
-                avdelingDAO.close();
-                ansattDAO.close();
+                System.out.println("?");
             }
         }
+        avdelingDAO.close();
+        ansattDAO.close();
         System.out.println();
         System.out.println("Trykk ein tast (enter) for å avslutta");
         scanner.nextLine();
