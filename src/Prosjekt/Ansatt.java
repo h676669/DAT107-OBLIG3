@@ -17,7 +17,10 @@ public class Ansatt {
     private int ansatt_id;
 
     @Column(columnDefinition = "TEXT")
-    private String brukernavn, fornavn, etternavn, stilling;
+    private String fornavn, etternavn, stilling;
+
+    @Column(columnDefinition = "TEXT", unique = true)
+    private String brukernavn;
 
     @Temporal(TemporalType.DATE)
     private Date ansettelsesDato; //?
