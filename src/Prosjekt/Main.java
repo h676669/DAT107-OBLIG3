@@ -156,7 +156,6 @@ public class Main {
                 System.out.println("Skriv inn ønsket navn på ny avdeling: ");
                 scanner.next();
                 String nyAvdeling = scanner.nextLine();
-                scanner.close();
                 for (Avdeling a : avdelingDAO.finnAlleAvdelinger()) {
                     if (a != null) {
                         if (!Objects.equals(a.getAvdelingsnavn(), nyAvdeling)) {
