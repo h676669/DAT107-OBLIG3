@@ -71,6 +71,5 @@ ALTER TABLE ProsjektDeltagelse
 ALTER TABLE ProsjektDeltagelse
     ADD CONSTRAINT fk_pd_prosjekt FOREIGN KEY (pd_prosjekt) REFERENCES Prosjekt (prosjekt_id);
 
-
 SELECT *
 FROM Ansatt;
