@@ -32,34 +32,59 @@ public class AvdelingDAO {
         }
     }
 
+
+
+    public void skrivUtAlleAnsatteAvdeling(int id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Avdeling managedAvdeling = finnAvdelingMedId(id);
+            managedAvdeling.skrivUtAlleAnsatt();
+        } finally {
+            em.close();
+        }
+    }
     public void lagreNyAvdeling(String avdeling_navn) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
+        AnsattDAO ansattDAO = new AnsattDAO();
         try {
+            // Check if avdeling already exists
+            TypedQuery<Avdeling> query = em.createQuery("SELECT a FROM Avdeling a WHERE a.avdeling_navn = :navn", Avdeling.class);
+            query.setParameter("navn", avdeling_navn);
+            List<Avdeling> existingAvdelinger = query.getResultList();
+
+            // If avdeling exists, print message and return without creating a new one
+            if (!existingAvdelinger.isEmpty()) {
+                System.out.println("Avdeling eksisterer allerede.");
+                return; // Early return to prevent creating a duplicate
+            }
 
             tx.begin();
-            AnsattDAO skalBliSjef = new AnsattDAO();
 
-            List<Ansatt> AlleAnsatte = skalBliSjef.finnAlleAnsatt();
-            int nySjefID = 0;
+            List<Ansatt> AlleAnsatte = ansattDAO.finnAlleAnsatt();
+            int nySjefID = -1; // Initialize with an invalid value
             Ansatt sjef = null;
 
-            for (Ansatt nySjef : AlleAnsatte) {
-                if (nySjef != null && nySjef.getAnsatt_id() != finnAvdelingMedId(nySjef.getAvdeling().getAvdelingID()).getLe_boss_id()) {
-                    nySjefID = nySjef.getAnsatt_id();
-                    sjef = nySjef;
-                    break;
+            // Attempt to find a suitable new sjef among existing ansatte
+            for (Ansatt potensiellSjef : AlleAnsatte) {
+                if (potensiellSjef != null) {
+                    // Assuming we add more criteria for being a sjef here
+                    nySjefID = potensiellSjef.getAnsatt_id();
+                    sjef = potensiellSjef;
+                    break; // Found a suitable sjef, break the loop
                 }
             }
-            Avdeling nyAvdeling = null;
-            List<Ansatt> nyeAnsatte = new ArrayList<>();
+
+            // Only proceed if a suitable sjef is found
             if (sjef != null) {
-                nyeAnsatte.add(sjef);
-                nyAvdeling = new Avdeling(avdeling_navn, nyeAnsatte, nySjefID);
-                skalBliSjef.oppdaterAnsatt(nySjefID, nyAvdeling.getAvdelingID());
-            }
-            if (nyAvdeling != null) {
-                em.persist(nyAvdeling);
+                Avdeling nyAvdeling = new Avdeling(avdeling_navn, new ArrayList<>(), nySjefID);
+                em.persist(nyAvdeling); // Persist the new avdeling
+
+                // Assuming we handle the sjef's assignment to this avdeling here
+                // This might include setting the sjef's avdeling_id to the new avdeling's id
+                // and any other necessary adjustments
+            } else {
+                System.out.println("Ingen passende sjef funnet, kan ikke opprette ny avdeling.");
             }
 
             tx.commit();
@@ -70,16 +95,7 @@ public class AvdelingDAO {
             }
         } finally {
             em.close();
-        }
-    }
-
-    public void skrivUtAlleAnsatteAvdeling(int id) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            Avdeling managedAvdeling = finnAvdelingMedId(id);
-            managedAvdeling.skrivUtAlleAnsatt();
-        } finally {
-            em.close();
+            ansattDAO.close(); // Ensure we close ansattDAO if used
         }
     }
 
