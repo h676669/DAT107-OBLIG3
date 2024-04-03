@@ -6,6 +6,7 @@ import jakarta.persistence.EntityTransaction;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -158,7 +159,7 @@ public class Main {
                 scanner.close();
                 for (Avdeling a : avdelingDAO.finnAlleAvdelinger()) {
                     if (a != null) {
-                        if (a.getAvdelingsnavn() != nyAvdeling) {
+                        if (!Objects.equals(a.getAvdelingsnavn(), nyAvdeling)) {
                             avdelingDAO.lagreNyAvdeling(nyAvdeling);
                         } else {
                             System.out.println("Avdeling eksisterer allerede");
