@@ -140,7 +140,7 @@ public class Main {
             }
             case 9 -> {
                 System.out.println("Skriv inn ønsket navn på ny avdeling: ");
-                scanner.next();
+                scanner.nextLine();
                 String nyAvdeling = scanner.nextLine();
                 for (Avdeling a : avdelingDAO.finnAlleAvdelinger()) {
                     if (a != null) {
