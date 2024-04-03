@@ -27,11 +27,11 @@ public class ProsjektDeltagelse {
 
     }
 
-    public ProsjektDeltagelse(String p_rolle, Ansatt ansatt, Prosjekt prosjekt, int timer) {
+    public ProsjektDeltagelse(String p_rolle, Ansatt ansatt, Prosjekt prosjekt) {
         this.p_rolle = p_rolle;
         this.prosjekt = prosjekt;
         this.ansatt = ansatt;
-        this.timer = timer;
+        this.timer = 0;
     }
 
     public int getProsjektdeltagelse_id() {

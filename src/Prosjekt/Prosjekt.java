@@ -2,6 +2,7 @@ package Prosjekt;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,10 +22,10 @@ public class Prosjekt {
 
     }
 
-    public Prosjekt(String prosjekt_beskrivelse, String prosjekt_navn, List<ProsjektDeltagelse> prosjektListe) {
+    public Prosjekt(String prosjekt_beskrivelse, String prosjekt_navn) {
         this.prosjekt_beskrivelse = prosjekt_beskrivelse;
         this.prosjekt_navn = prosjekt_navn;
-        this.prosjektListe = prosjektListe;
+        this.prosjektListe = new ArrayList<>();
     }
 
     public int getProsjekt_id() {

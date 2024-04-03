@@ -141,16 +141,27 @@ public class Main {
                 prosjektDAO.lagreNyttProsjekt("test", "Geir", new ArrayList<>());
             }
             case 11 -> {
-                //TODO
-//                Ansatt testAnsatt = new Ansatt("rmd", "Ronald", "McDonald", "The Burger King", 420.0 , avdelingDAO.finnAvdelingMedId(2), 1);
-//                ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
-//                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger", testAnsatt, "???");
+                Prosjekt testProsjekt = new Prosjekt();
+                Ansatt testAnsatt = new Ansatt("rmd", "Ronald", "McDonald", "The Burger King", 420.0 , avdelingDAO.finnAvdelingMedId(2));
+                ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
+                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger", testAnsatt, testProsjekt);
             }
             case 12 -> {
-                //TODO
+                ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
+                prosjektDeltagelseDAO.leggTilTimer(1, 100);
             }
             case 13 -> {
-                //TODO
+                ProsjektDAO prosjektDAO = new ProsjektDAO();
+                System.out.println("Skriv inn prosjekt ID: ");
+                int pID = scanner.nextInt();
+
+                int sumTimer = 0;
+                for (ProsjektDeltagelse p : prosjektDAO.finnProsjektMedId(pID).getProsjektListe()) {
+                    sumTimer += p.getTimer();
+                    System.out.println(p.getAnsatt());
+                    System.out.println(p.getP_rolle());
+                    System.out.println("Totalt antall timer: " + sumTimer);
+                }
             }
 
             default -> {

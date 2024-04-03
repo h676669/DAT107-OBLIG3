@@ -19,7 +19,7 @@ public class ProsjektDAO {
 
         try {
             tx.begin();
-            em.persist(new Prosjekt(prosjekt_beskrivelse, prosjektNavn, prosjektliste));
+            em.persist(new Prosjekt(prosjekt_beskrivelse, prosjektNavn));
             tx.commit();
         } catch (Throwable e) {
             e.printStackTrace();

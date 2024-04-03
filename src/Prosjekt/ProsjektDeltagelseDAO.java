@@ -14,12 +14,12 @@ public class ProsjektDeltagelseDAO {
         emf = Persistence.createEntityManagerFactory("ProsjektDeltagelse");
     }
 
-    public void lagreNyProsjektDeltagelse(String rolle, Ansatt ansatt, Prosjekt prosjekt, int timer) {
+    public void lagreNyProsjektDeltagelse(String rolle, Ansatt ansatt, Prosjekt prosjekt) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            em.persist(new ProsjektDeltagelse(rolle, ansatt, prosjekt, timer));
+            em.persist(new ProsjektDeltagelse(rolle, ansatt, prosjekt));
             tx.commit();
         } catch (Throwable e) {
             e.printStackTrace();
