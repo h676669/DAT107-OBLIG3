@@ -29,20 +29,22 @@ public class Main {
         System.out.println("3: Utlisting av alle ansatte");
         System.out.println("4: Oppdater en ansatt sin stilling og/ eller lønn");
         System.out.println("5: Legg inn en ny ansatt");
+        System.out.println("6: Søk etter avdeling på avdeling-ID");
+        System.out.println("7: Utlisting av alle ansatte på en avdeling inkl. utheving av hvem som er sjef");
 
         String invalidTekst = "Invalid, prøv igjen";
         int valg = -1;
-        // Tvinger input til å være et tall mellom 1 og 5
+        // Tvinger input til å være et tall mellom 1 og ?
         do {
             while (!scanner.hasNextInt()) {
                 scanner.next();
                 System.out.println(invalidTekst);
             }
             valg = scanner.nextInt();
-            if (valg < 1 || valg > 5) {
+            if (valg < 1 || valg > 7) {
                 System.out.println(invalidTekst);
             }
-        } while (valg < 1 || valg > 5);
+        } while (valg < 1 || valg > 7);
 
         // metodekall her
         switch (valg) {
@@ -116,11 +118,25 @@ public class Main {
                 ansattDAO = new AnsattDAO();
                 avdelingDAO = new AvdelingDAO();
                 Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1), 1);
-                nyAnsatt.setAnsettelsesDato(new Date());
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
-
                 avdelingDAO.close();
                 ansattDAO.close();
+                System.out.println(nyAnsatt.toString() + " har blitt opprettet");
+            }
+            case 6 -> {
+                System.out.println("Skriv inn avdeling ID:");
+                sokAvdeling(avdelingDAO, scanner.nextInt());
+            }
+            case 7 -> {
+                System.out.println("Skriv inn avdeling ID:");
+                int id = scanner.nextInt();
+                for (Ansatt a : avdelingDAO.finnAvdelingMedId(id).getAvdelingAnsatt()) {
+                    if (a.getAnsatt_id() == avdelingDAO.finnAvdelingMedId(id).getLe_boss_id()) {
+                        System.out.println("THE BOSS HIMSELF: xX" + a + "Xx");
+                    } else {
+                        System.out.println(a);
+                    }
+                }
             }
             default -> {
                 avdelingDAO.close();

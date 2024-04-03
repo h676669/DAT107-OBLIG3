@@ -44,6 +44,7 @@ public class Ansatt {
         this.manedslonn = manedslonn;
         this.avdeling_id = avdeling;
         this.prosjektdeltagelse = prosjektdeltagelse;
+        this.ansettelsesDato = new Date();
     }
 
 
@@ -131,6 +132,7 @@ public class Ansatt {
         this.prosjektdeltagelse = prosjektdeltagelse;
     }
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("ID: ");
         sb.append(ansatt_id);
