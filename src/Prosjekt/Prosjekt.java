@@ -17,6 +17,16 @@ public class Prosjekt {
     @OneToMany(mappedBy = "prosjekt") // Corrected mapping field name
     private List<ProsjektDeltagelse> prosjektListe;
 
+    public Prosjekt() {
+
+    }
+
+    public Prosjekt(String prosjekt_beskrivelse, String prosjekt_navn, List<ProsjektDeltagelse> prosjektListe) {
+        this.prosjekt_beskrivelse = prosjekt_beskrivelse;
+        this.prosjekt_navn = prosjekt_navn;
+        this.prosjektListe = prosjektListe;
+    }
+
     public int getProsjekt_id() {
         return prosjekt_id;
     }
@@ -46,15 +56,6 @@ public class Prosjekt {
     }
 
     public void setProsjektListe(List<ProsjektDeltagelse> prosjektListe) {
-        this.prosjektListe = prosjektListe;
-    }
-
-    public Prosjekt() {
-
-    }
-    public Prosjekt(String prosjekt_beskrivelse, String prosjekt_navn, List<ProsjektDeltagelse> prosjektListe){
-        this.prosjekt_beskrivelse = prosjekt_beskrivelse;
-        this.prosjekt_navn = prosjekt_navn;
         this.prosjektListe = prosjektListe;
     }
 

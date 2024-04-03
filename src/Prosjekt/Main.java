@@ -149,7 +149,8 @@ public class Main {
         scanner.nextLine(); // dette er ikke en feil
 
     }
-    private static void sokEtterAnsattID (AnsattDAO ansattDAO,int id){
+
+    private static void sokEtterAnsattID(AnsattDAO ansattDAO, int id) {
         try {
             ansattDAO = new AnsattDAO();
             Ansatt ansatt = ansattDAO.finnAnsattMedId(id);
@@ -166,7 +167,7 @@ public class Main {
         }
     }
 
-    private static void sokEtterAnsattInitial (AnsattDAO ansattDAO, String initialer) {
+    private static void sokEtterAnsattInitial(AnsattDAO ansattDAO, String initialer) {
         try {
             ansattDAO = new AnsattDAO();
             Ansatt ansatt = ansattDAO.finnAnsattMedBrukernavn(initialer);
@@ -184,7 +185,7 @@ public class Main {
         }
     }
 
-    private static void sokAvdeling (AvdelingDAO avdelingDAO,int id){
+    private static void sokAvdeling(AvdelingDAO avdelingDAO, int id) {
         try {
             avdelingDAO = new AvdelingDAO();
             int avdelingID = id;

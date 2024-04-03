@@ -23,6 +23,17 @@ public class ProsjektDeltagelse {
 
     private int timer;
 
+    public ProsjektDeltagelse() {
+
+    }
+
+    public ProsjektDeltagelse(String p_rolle, Ansatt ansatt, Prosjekt prosjekt, int timer) {
+        this.p_rolle = p_rolle;
+        this.prosjekt = prosjekt;
+        this.ansatt = ansatt;
+        this.timer = timer;
+    }
+
     public int getProsjektdeltagelse_id() {
         return prosjektdeltagelse_id;
     }
@@ -60,16 +71,6 @@ public class ProsjektDeltagelse {
     }
 
     public void setTimer(int timer) {
-        this.timer = timer;
-    }
-
-    public ProsjektDeltagelse(){
-
-    }
-    public ProsjektDeltagelse(String p_rolle, Ansatt ansatt, Prosjekt prosjekt, int timer){
-        this.p_rolle = p_rolle;
-        this.prosjekt = prosjekt;
-        this.ansatt = ansatt;
         this.timer = timer;
     }
 }
