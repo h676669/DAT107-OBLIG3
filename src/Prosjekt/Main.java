@@ -93,8 +93,8 @@ public class Main {
                 }
             }
             case 5 -> {
-                System.out.println("Pray forgive me sensei, for this employee is but hardcoded. UwU");
-                Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1));
+                System.out.println("Skriv inn følgende: Brukernavn(max 4 bokstaver), fornavn, etternavn, stilling, lønn: ");
+                Ansatt nyAnsatt = new Ansatt(scanner.next(), scanner.next(), scanner.next(), scanner.next(), scanner.nextDouble(), avdelingDAO.finnAvdelingMedId(1));
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
                 System.out.println(nyAnsatt + " har blitt opprettet.");
             }
@@ -107,7 +107,7 @@ public class Main {
                 int id = scanner.nextInt();
                 for (Ansatt a : avdelingDAO.finnAvdelingMedId(id).getAvdelingAnsatt()) {
                     if (a.getAnsatt_id() == avdelingDAO.finnAvdelingMedId(id).getLe_boss_id()) {
-                        System.out.println("THE BOSS HIMSELF: xX" + a + "Xx");
+                        System.out.println("THE BOSS HIMSELF: xX" + a + "Xx ");
                     } else {
                         System.out.println(a);
                     }
