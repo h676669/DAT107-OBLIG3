@@ -26,7 +26,7 @@ public class Main {
         System.out.println("12: Føre timer for en ansatt på et prosjekt");
         System.out.println("13: Utskrift av info om prosjekt, inkl. liste av deltagere med rolle og timer, og totalt timetall for prosjektet");
 
-        String invalidTekst = "Invalid, prøv igjen";
+        String invalidTekst = "Ugyldig, prøv igjen";
         int valg = -1;
         // Tvinger input til å være et tall mellom 1 og 13
         do {
@@ -91,7 +91,7 @@ public class Main {
                 }
             }
             case 5 -> {
-                System.out.println("Pray forgive me sensei, for this employee is but hardcoded.");
+                System.out.println("Pray forgive me sensei, for this employee is but hardcoded. UwU");
                 Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1));
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
                 System.out.println(nyAnsatt + " har blitt opprettet");
@@ -114,7 +114,7 @@ public class Main {
             case 8 -> {
                 System.out.println("Skriv inn ansatt ID:");
                 int id = scanner.nextInt();
-                System.out.println("Skriv inn ny avdeling Id");
+                System.out.println("Skriv inn ny avdeling ID");
                 int nyAvdeling = scanner.nextInt();
                 ansattDAO.oppdaterAnsatt(id, nyAvdeling);
                 avdelingDAO.leggTilAnsatt(ansattDAO.finnAnsattMedId(id),nyAvdeling);
@@ -172,7 +172,7 @@ public class Main {
         avdelingDAO.close();
         ansattDAO.close();
         System.out.println();
-        System.out.println("Trykk ein tast (enter) for å avslutta");
+        System.out.println("Trykk en tast (enter) for å avslutte.");
         scanner.nextLine();
         scanner.nextLine(); // dette er ikke en feil
 
@@ -183,9 +183,9 @@ public class Main {
             ansattDAO = new AnsattDAO();
             Ansatt ansatt = ansattDAO.finnAnsattMedId(id);
             if (ansatt != null) {
-                System.out.println("Found ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+                System.out.println("Fant ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
             } else {
-                System.out.println("Ansatt with ID " + id + " not found.");
+                System.out.println("Ansatt med ID " + id + " ikke funnet.");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -199,9 +199,9 @@ public class Main {
             ansattDAO = new AnsattDAO();
             Ansatt ansatt = ansattDAO.finnAnsattMedBrukernavn(initialer);
             if (ansatt != null) {
-                System.out.println("Found ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+                System.out.println("Fant ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
             } else {
-                System.out.println("Ansatt with initials " + initialer + " not found.");
+                System.out.println("Ansatt med initialer " + initialer + " ikke funnet.");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -215,9 +215,9 @@ public class Main {
             avdelingDAO = new AvdelingDAO();
             Avdeling avdeling = avdelingDAO.finnAvdelingMedId(id);
             if (avdeling != null) {
-                System.out.println("Found avdeling: " + avdeling.getAvdelingsnavn());
+                System.out.println("Fant avdeling: " + avdeling.getAvdelingsnavn());
             } else {
-                System.out.println("Avdeling with ID " + id + " not found.");
+                System.out.println("Avdeling med ID " + id + " ikke funnet.");
             }
         } catch (Exception e) {
             e.printStackTrace();
