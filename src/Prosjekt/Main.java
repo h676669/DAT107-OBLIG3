@@ -31,6 +31,8 @@ public class Main {
         System.out.println("5: Legg inn en ny ansatt");
         System.out.println("6: Søk etter avdeling på avdeling-ID");
         System.out.println("7: Utlisting av alle ansatte på en avdeling inkl. utheving av hvem som er sjef");
+        System.out.println("8: Oppdatere hvilken avdeling en ansatt jobber på. Man kan ikke bytte avdeling hvis man er sjef!");
+        System.out.println("9: Legg inn en ny avdeling(!)");
 
         String invalidTekst = "Invalid, prøv igjen";
         int valg = -1;
@@ -41,10 +43,10 @@ public class Main {
                 System.out.println(invalidTekst);
             }
             valg = scanner.nextInt();
-            if (valg < 1 || valg > 7) {
+            if (valg < 1 || valg > 9) {
                 System.out.println(invalidTekst);
             }
-        } while (valg < 1 || valg > 7);
+        } while (valg < 1 || valg > 9);
 
         // metodekall her
         switch (valg) {
@@ -115,13 +117,14 @@ public class Main {
 
             }
             case 5 -> {
+                System.out.println("Pray forgive me sensei, for this employee is but hardcoded.");
                 ansattDAO = new AnsattDAO();
                 avdelingDAO = new AvdelingDAO();
                 Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1), 1);
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
                 avdelingDAO.close();
                 ansattDAO.close();
-                System.out.println(nyAnsatt.toString() + " har blitt opprettet");
+                System.out.println(nyAnsatt + " har blitt opprettet");
             }
             case 6 -> {
                 System.out.println("Skriv inn avdeling ID:");
@@ -138,13 +141,38 @@ public class Main {
                     }
                 }
             }
+            case 8 -> {
+                ansattDAO = new AnsattDAO();
+                System.out.println("Skriv inn ansatt ID:");
+                int id = scanner.nextInt();
+                System.out.println("Skriv inn ny avdeling Id");
+                int nyAvdeling = scanner.nextInt();
+                ansattDAO.oppdaterAnsatt(id, nyAvdeling);
+                avdelingDAO.close();
+                ansattDAO.close();
+            }
+            case 9 -> {
+                System.out.println("Skriv inn ønsket navn på ny avdeling: ");
+                scanner.next();
+                String nyAvdeling = scanner.nextLine();
+                scanner.close();
+                for (Avdeling a : avdelingDAO.finnAlleAvdelinger()) {
+                    if (a != null) {
+                        if (a.getAvdelingsnavn() != nyAvdeling) {
+                            avdelingDAO.lagreNyAvdeling(nyAvdeling);
+                        } else {
+                            System.out.println("Avdeling eksisterer allerede");
+                        }
+                    }
+                }
+            }
             default -> {
                 avdelingDAO.close();
                 ansattDAO.close();
             }
         }
         System.out.println();
-        System.out.println("Trykk ein tast for å avslutta");
+        System.out.println("Trykk ein tast (enter) for å avslutta");
         scanner.nextLine();
         scanner.nextLine(); // dette er ikke en feil
 
