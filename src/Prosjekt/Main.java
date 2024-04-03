@@ -110,7 +110,6 @@ public class Main {
                 String stilling = scanner.nextLine();
                 System.out.println("Lønn:");
                 double lonn = scanner.nextDouble();
-
                 Ansatt nyAnsatt = new Ansatt(brukernavn, fornavn, etternavn, stilling, lonn, avdelingDAO.finnAvdelingMedId(1));
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
                 System.out.println(nyAnsatt + " har blitt opprettet.");
@@ -156,7 +155,12 @@ public class Main {
             case 10 -> {
                 System.out.println();
                 ProsjektDAO prosjektDAO = new ProsjektDAO();
-                prosjektDAO.lagreNyttProsjekt("test", "Geir");
+                scanner.nextLine();
+                System.out.println("Skriv inn navn på nytt Prosjekt: ");
+                String prosjektnavn = scanner.nextLine();
+                System.out.println("Legg til en beskrivelse av det nye prosjektet: ");
+                String prosjektbeskrivelse = scanner.nextLine();
+                prosjektDAO.lagreNyttProsjekt(prosjektnavn, prosjektbeskrivelse);
             }
             case 11 -> {
                 ProsjektDAO prosjektDAO = new ProsjektDAO();
@@ -168,7 +172,13 @@ public class Main {
             }
             case 12 -> {
                 ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
-                prosjektDeltagelseDAO.leggTilTimer(1, 100);
+                scanner.nextLine();
+                System.out.println("Skriv inn Prosjektdeltakelse ID: ");
+                int a_id = scanner.nextInt();
+                scanner.nextLine();
+                System.out.println("Skriv inn antall timer: ");
+                int timer = scanner.nextInt();
+                prosjektDeltagelseDAO.leggTilTimer(a_id, timer);
             }
             case 13 -> {
                 ProsjektDAO prosjektDAO = new ProsjektDAO();
