@@ -54,8 +54,7 @@ public class AvdelingDAO {
             Ansatt sjef = null;
 
             for (Ansatt potensiellSjef : AlleAnsatte) {
-                if (potensiellSjef != null) {
-
+                if (potensiellSjef != null && potensiellSjef.getAvdeling().getLe_boss_id() != potensiellSjef.getAnsatt_id()) {
                     nySjefID = potensiellSjef.getAnsatt_id();
                     sjef = potensiellSjef;
                     break;
