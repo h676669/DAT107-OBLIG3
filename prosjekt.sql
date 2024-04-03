@@ -47,7 +47,7 @@ VALUES ('BERGEN', 1),
 INSERT INTO Ansatt(brukernavn, fornavn, etternavn, ansettelsesdato, stilling, manedslonn, avdeling_id)
 VALUES ('evs', 'Edvard', 'Vindenes Steenslid', '2012-08-24', 'Programmeringsmyrder', 4206969.69, 1),
        ('omgp', 'Ole Mathis Gudmund', 'Persen', '2019-06-13', 'Nordlending', 2697340.53, 2),
-       ('lcs', 'Lars-Christian', 'Selland', '2001-03-01', 'Kodeoptimaliserer', 360442.67, 1),
+       ('lcs', 'Lars-Christian', 'Selland', '2001-03-01', 'Kodeoptimaliserer', 360442.67, 3),
        ('mk', 'Morten', 'Kvamme', '2024-02-29', 'CEO', 32564000.10, 1);
 
 INSERT INTO Prosjekt(prosjekt_navn, prosjekt_beskrivelse)
