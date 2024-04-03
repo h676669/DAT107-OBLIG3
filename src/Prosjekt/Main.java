@@ -160,6 +160,7 @@ public class Main {
                     if (a != null) {
                         if (!Objects.equals(a.getAvdelingsnavn(), nyAvdeling)) {
                             avdelingDAO.lagreNyAvdeling(nyAvdeling);
+                            break;
                         } else {
                             System.out.println("Avdeling eksisterer allerede");
                         }
