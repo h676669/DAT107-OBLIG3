@@ -9,10 +9,10 @@ import jakarta.persistence.*;
 public class ProsjektDeltagelse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int prosjektdeltagelse_id;
+    private int pd_id;
 
     @Column(columnDefinition = "TEXT")
-    private String p_rolle;
+    private String pd_rolle;
 
     @ManyToOne
     @JoinColumn(name = "pd_ansatt")
@@ -27,27 +27,27 @@ public class ProsjektDeltagelse {
 
     }
 
-    public ProsjektDeltagelse(String p_rolle, Ansatt ansatt, Prosjekt prosjekt) {
-        this.p_rolle = p_rolle;
+    public ProsjektDeltagelse(String pd_rolle, Ansatt ansatt, Prosjekt prosjekt) {
+        this.pd_rolle = pd_rolle;
         this.prosjekt = prosjekt;
         this.ansatt = ansatt;
         this.timer = 0;
     }
 
     public int getProsjektdeltagelse_id() {
-        return prosjektdeltagelse_id;
+        return pd_id;
     }
 
-    public void setProsjektdeltagelse_id(int prosjektdeltagelse_id) {
-        this.prosjektdeltagelse_id = prosjektdeltagelse_id;
+    public void setProsjektdeltagelse_id(int pd_id) {
+        this.pd_id = pd_id;
     }
 
     public String getP_rolle() {
-        return p_rolle;
+        return pd_rolle;
     }
 
-    public void setP_rolle(String p_rolle) {
-        this.p_rolle = p_rolle;
+    public void setP_rolle(String pd_rolle) {
+        this.pd_rolle = pd_rolle;
     }
 
     public Ansatt getAnsatt() {
