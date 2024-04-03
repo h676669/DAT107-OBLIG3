@@ -66,7 +66,6 @@ public class AvdelingDAO {
                 Avdeling nyAvdeling = new Avdeling(avdeling_navn, new ArrayList<>(), nySjefID);
                 em.persist(nyAvdeling);
                 ansattDAO.oppdaterAnsatt(sjef.getAnsattID(), nyAvdeling.getAvdelingID());
-                em.merge(sjef);
             } else {
                 System.out.println("Ingen passende sjef funnet, kan ikke opprette ny avdeling.");
             }
