@@ -93,7 +93,7 @@ public class Main {
             }
             case 5 -> {
                 System.out.println("Pray forgive me sensei, for this employee is but hardcoded.");
-                Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1), 1);
+                Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1));
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
                 System.out.println(nyAnsatt + " har blitt opprettet");
             }
@@ -142,9 +142,9 @@ public class Main {
             }
             case 11 -> {
                 //TODO
-                Ansatt testAnsatt = new Ansatt("rmd", "Ronald", "McDonald", "The Burger King", 420.0 , avdelingDAO.finnAvdelingMedId(2), 1);
-                ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
-                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger", testAnsatt, "???");
+//                Ansatt testAnsatt = new Ansatt("rmd", "Ronald", "McDonald", "The Burger King", 420.0 , avdelingDAO.finnAvdelingMedId(2), 1);
+//                ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
+//                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger", testAnsatt, "???");
             }
             case 12 -> {
                 //TODO

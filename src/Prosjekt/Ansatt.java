@@ -37,7 +37,7 @@ public class Ansatt {
 
     public Ansatt(String brukernavn, String fornavn,
                   String etternavn, String stilling,
-                  Double manedslonn, Avdeling avdeling, List<ProsjektDeltagelse> prosjektdeltagelse) {
+                  Double manedslonn, Avdeling avdeling) {
         this.etternavn = etternavn;
         this.fornavn = fornavn;
         this.brukernavn = brukernavn;
