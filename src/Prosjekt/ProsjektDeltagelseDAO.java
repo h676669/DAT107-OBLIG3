@@ -66,13 +66,10 @@ public class ProsjektDeltagelseDAO {
 
             //noe her
             tx.commit();
-        }
-        finally {
+        } finally {
             em.close();
         }
     }
-
-
 
 
 }

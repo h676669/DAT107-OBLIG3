@@ -56,9 +56,9 @@ public class AvdelingDAO {
             if (sjef != null) {
                 nyeAnsatte.add(sjef);
                 nyAvdeling = new Avdeling(avdeling_navn, nyeAnsatte, nySjefID);
-                skalBliSjef.oppdaterAnsatt(nySjefID,nyAvdeling.getAvdelingID());
+                skalBliSjef.oppdaterAnsatt(nySjefID, nyAvdeling.getAvdelingID());
             }
-            if (nyAvdeling != null){
+            if (nyAvdeling != null) {
                 em.persist(nyAvdeling);
             }
 

@@ -1,4 +1,5 @@
 package Prosjekt;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -6,27 +7,28 @@ public class Main {
     public static void main(String[] args) {
         meny();
     }
+
     public static void meny() {
         AnsattDAO ansattDAO = new AnsattDAO();
         AvdelingDAO avdelingDAO = new AvdelingDAO();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Trykk ein tast på hustelefonen for å velje eit valg");
-        System.out.println("1: Søk etter ansatt på ansatt-ID");
-        System.out.println("2: Søk etter ansatt på brukernavn (initialer)");
-        System.out.println("3: Utlisting av alle ansatte");
-        System.out.println("4: Oppdater en ansatt sin stilling og/ eller lønn");
-        System.out.println("5: Legg inn en ny ansatt");
-        System.out.println("6: Søk etter avdeling på avdeling-ID");
-        System.out.println("7: Utlisting av alle ansatte på en avdeling inkl. utheving av hvem som er sjef");
+        System.out.println("Trykk en tast på hustelefonen for å velge et valg:");
+        System.out.println("1: Søk etter ansatt på ansatt-ID.");
+        System.out.println("2: Søk etter ansatt på brukernavn (initialer).");
+        System.out.println("3: Utlisting av alle ansatte.");
+        System.out.println("4: Oppdater en ansatt sin stilling og/ eller lønn.");
+        System.out.println("5: Legg inn en ny ansatt.");
+        System.out.println("6: Søk etter avdeling på avdeling-ID.");
+        System.out.println("7: Utlisting av alle ansatte på en avdeling inkl. utheving av hvem som er sjef.");
         System.out.println("8: Oppdatere hvilken avdeling en ansatt jobber på. Man kan ikke bytte avdeling hvis man er sjef!");
-        System.out.println("9: Legg inn en ny avdeling(!)");
-        System.out.println("10: Legge inn et nytt prosjekt");
-        System.out.println("11: Registrere prosjektdeltagelse (ansatt med rolle i prosjekt)");
-        System.out.println("12: Føre timer for en ansatt på et prosjekt");
-        System.out.println("13: Utskrift av info om prosjekt, inkl. liste av deltagere med rolle og timer, og totalt timetall for prosjektet");
+        System.out.println("9: Legg inn en ny avdeling(!).");
+        System.out.println("10: Legge inn et nytt prosjekt.");
+        System.out.println("11: Registrere prosjektdeltagelse (ansatt med rolle i prosjekt).");
+        System.out.println("12: Føre timer for en ansatt på et prosjekt.");
+        System.out.println("13: Utskrift av info om prosjekt, inkl. liste av deltagere med rolle og timer, og totalt timetall for prosjektet.");
 
-        String invalidTekst = "Ugyldig, prøv igjen";
+        String invalidTekst = "Ugyldig, prøv igjen.";
         int valg = -1;
         // Tvinger input til å være et tall mellom 1 og 13
         do {
@@ -43,7 +45,7 @@ public class Main {
         // metodekall her
         switch (valg) {
             case 1 -> {
-                System.out.println("Skriv inn ansatt ID");
+                System.out.println("Skriv inn ansatt ID:");
                 int id;
                 while (!scanner.hasNextInt()) {
                     scanner.next();
@@ -53,7 +55,7 @@ public class Main {
                 sokEtterAnsattID(ansattDAO, id);
             }
             case 2 -> {
-                System.out.println("Skriv inn ansattes initialer");
+                System.out.println("Skriv inn ansattes initialer:");
                 String initial = scanner.next();
                 sokEtterAnsattInitial(ansattDAO, initial);
             }
@@ -77,15 +79,15 @@ public class Main {
                 System.out.println("3: Stilling og lønn");
                 switch (scanner.nextInt()) {
                     case 1 -> {
-                        System.out.println("Skriv inn ny stilling");
+                        System.out.println("Skriv inn ny stilling:");
                         ansattDAO.oppdaterAnsatt(id, scanner.next());
                     }
                     case 2 -> {
-                        System.out.println("Skriv inn ny lønn");
+                        System.out.println("Skriv inn ny lønn:");
                         ansattDAO.oppdaterAnsatt(id, scanner.nextDouble());
                     }
                     case 3 -> {
-                        System.out.println("Skriv inn ny stilling og deretter lønn");
+                        System.out.println("Skriv inn ny stilling og deretter lønn:");
                         ansattDAO.oppdaterAnsatt(id, scanner.next(), scanner.nextDouble());
                     }
                 }
@@ -94,14 +96,14 @@ public class Main {
                 System.out.println("Pray forgive me sensei, for this employee is but hardcoded. UwU");
                 Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1));
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
-                System.out.println(nyAnsatt + " har blitt opprettet");
+                System.out.println(nyAnsatt + " har blitt opprettet.");
             }
             case 6 -> {
-                System.out.println("Skriv inn avdeling ID:");
+                System.out.println("Skriv inn avdeling ID: ");
                 sokAvdeling(avdelingDAO, scanner.nextInt());
             }
             case 7 -> {
-                System.out.println("Skriv inn avdeling ID:");
+                System.out.println("Skriv inn avdeling ID: ");
                 int id = scanner.nextInt();
                 for (Ansatt a : avdelingDAO.finnAvdelingMedId(id).getAvdelingAnsatt()) {
                     if (a.getAnsatt_id() == avdelingDAO.finnAvdelingMedId(id).getLe_boss_id()) {
@@ -112,12 +114,12 @@ public class Main {
                 }
             }
             case 8 -> {
-                System.out.println("Skriv inn ansatt ID:");
+                System.out.println("Skriv inn ansatt ID: ");
                 int id = scanner.nextInt();
-                System.out.println("Skriv inn ny avdeling ID");
+                System.out.println("Skriv inn ny avdeling ID: ");
                 int nyAvdeling = scanner.nextInt();
                 ansattDAO.oppdaterAnsatt(id, nyAvdeling);
-                avdelingDAO.leggTilAnsatt(ansattDAO.finnAnsattMedId(id),nyAvdeling);
+                avdelingDAO.leggTilAnsatt(ansattDAO.finnAnsattMedId(id), nyAvdeling);
             }
             case 9 -> {
                 System.out.println("Skriv inn ønsket navn på ny avdeling: ");
@@ -129,7 +131,7 @@ public class Main {
                             avdelingDAO.lagreNyAvdeling(nyAvdeling);
                             break;
                         } else {
-                            System.out.println("Avdeling eksisterer allerede");
+                            System.out.println("Avdeling eksisterer allerede.");
                         }
                     }
                 }
@@ -145,7 +147,7 @@ public class Main {
                 //Ansatt testAnsatt = new Ansatt("rmd", "Ronald", "McDonald", "The Burger King", 420.0 , avdelingDAO.finnAvdelingMedId(2));
 
                 ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
-                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger",ansattDAO.finnAnsattMedId(1)  ,prosjektDAO.finnProsjektMedId(1));
+                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger", ansattDAO.finnAnsattMedId(1), prosjektDAO.finnProsjektMedId(1));
             }
             case 12 -> {
                 ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
@@ -159,9 +161,9 @@ public class Main {
                 int sumTimer = 0;
                 for (ProsjektDeltagelse p : prosjektDAO.finnProsjektMedId(pID).getProsjektListe()) {
                     sumTimer += p.getTimer();
-                    System.out.println(p.getAnsatt());
-                    System.out.println(p.getP_rolle());
-                    System.out.println("Totalt antall timer: " + sumTimer);
+                    System.out.println(p.getAnsatt() + ".");
+                    System.out.println(p.getP_rolle() + ".");
+                    System.out.println("Totalt antall timer: " + sumTimer + ".");
                 }
             }
 
@@ -183,7 +185,7 @@ public class Main {
             ansattDAO = new AnsattDAO();
             Ansatt ansatt = ansattDAO.finnAnsattMedId(id);
             if (ansatt != null) {
-                System.out.println("Fant ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+                System.out.println("Fant ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn() + ".");
             } else {
                 System.out.println("Ansatt med ID " + id + " ikke funnet.");
             }
@@ -199,7 +201,7 @@ public class Main {
             ansattDAO = new AnsattDAO();
             Ansatt ansatt = ansattDAO.finnAnsattMedBrukernavn(initialer);
             if (ansatt != null) {
-                System.out.println("Fant ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn());
+                System.out.println("Fant ansatt: " + ansatt.getFornavn() + " " + ansatt.getEtternavn() + ".");
             } else {
                 System.out.println("Ansatt med initialer " + initialer + " ikke funnet.");
             }
@@ -215,7 +217,7 @@ public class Main {
             avdelingDAO = new AvdelingDAO();
             Avdeling avdeling = avdelingDAO.finnAvdelingMedId(id);
             if (avdeling != null) {
-                System.out.println("Fant avdeling: " + avdeling.getAvdelingsnavn());
+                System.out.println("Fant avdeling: " + avdeling.getAvdelingsnavn() + ".");
             } else {
                 System.out.println("Avdeling med ID " + id + " ikke funnet.");
             }
