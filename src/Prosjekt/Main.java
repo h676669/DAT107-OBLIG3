@@ -67,7 +67,6 @@ public class Main {
                 sokEtterAnsattInitial(ansattDAO, initial);
             }
             case 3 -> {
-                ansattDAO = new AnsattDAO();
                 try {
                     for (Ansatt a : ansattDAO.finnAlleAnsatt()) {
                         System.out.println(a.toString());
@@ -78,7 +77,6 @@ public class Main {
                 }
             }
             case 4 -> {
-                ansattDAO = new AnsattDAO();
                 System.out.println("Skriv inn ansatt ID:");
                 int id = scanner.nextInt();
                 System.out.println();
@@ -105,8 +103,6 @@ public class Main {
             }
             case 5 -> {
                 System.out.println("Pray forgive me sensei, for this employee is but hardcoded.");
-                ansattDAO = new AnsattDAO();
-                avdelingDAO = new AvdelingDAO();
                 Ansatt nyAnsatt = new Ansatt("Geir", "Trolldeig", "Stein", "Konduktør", 529.30, avdelingDAO.finnAvdelingMedId(1), 1);
                 ansattDAO.leggTilNyAnsatt(nyAnsatt);
                 System.out.println(nyAnsatt + " har blitt opprettet");
@@ -127,7 +123,6 @@ public class Main {
                 }
             }
             case 8 -> {
-                ansattDAO = new AnsattDAO();
                 System.out.println("Skriv inn ansatt ID:");
                 int id = scanner.nextInt();
                 System.out.println("Skriv inn ny avdeling Id");
