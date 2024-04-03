@@ -65,11 +65,15 @@ ALTER TABLE Ansatt
 ALTER TABLE Avdeling
     ADD CONSTRAINT Avdeling_fk1 FOREIGN KEY (avdeling_ansatt) REFERENCES Ansatt (ansatt_id);
 ALTER TABLE Avdeling
-    ADD CONSTRAINT Avdeling_fk2 FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id);
+    ADD CONSTRAINT Avdeling_fk2 FOREIGN KEY (le_boss_id) REFERENCES Ansatt (ansatt_id) ON DELETE RESTRICT;
 ALTER TABLE ProsjektDeltagelse
     ADD CONSTRAINT fk_pd_ansatt FOREIGN KEY (pd_ansatt) REFERENCES Ansatt (ansatt_id);
 ALTER TABLE ProsjektDeltagelse
     ADD CONSTRAINT fk_pd_prosjekt FOREIGN KEY (pd_prosjekt) REFERENCES Prosjekt (prosjekt_id);
+ALTER TABLE Ansatt
+    ADD CONSTRAINT fk_ansatt_pd FOREIGN KEY (ansatt_id) REFERENCES ProsjektDeltagelse (pd_ansatt) ON DELETE RESTRICT;
+ALTER TABLE Prosjekt
+    ADD CONSTRAINT fk_prosjekt_pd FOREIGN KEY (prosjekt_id) REFERENCES ProsjektDeltagelse (pd_prosjekt) ON DELETE RESTRICT;
 
 SELECT *
 FROM Ansatt;
