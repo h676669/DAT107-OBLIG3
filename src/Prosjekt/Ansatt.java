@@ -44,7 +44,7 @@ public class Ansatt {
         this.stilling = stilling;
         this.manedslonn = manedslonn;
         this.avdeling_id = avdeling;
-        this.prosjektDeltagelse = prosjektdeltagelse;
+        this.prosjektDeltagelse = new ArrayList<ProsjektDeltagelse>();
         this.ansettelsesDato = new Date();
     }
 
