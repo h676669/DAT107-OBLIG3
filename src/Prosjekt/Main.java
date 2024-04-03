@@ -1,4 +1,5 @@
 package Prosjekt;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -21,6 +22,10 @@ public class Main {
         System.out.println("7: Utlisting av alle ansatte på en avdeling inkl. utheving av hvem som er sjef");
         System.out.println("8: Oppdatere hvilken avdeling en ansatt jobber på. Man kan ikke bytte avdeling hvis man er sjef!");
         System.out.println("9: Legg inn en ny avdeling(!)");
+        System.out.println("10: Legge inn et nytt prosjekt");
+        System.out.println("11: Registrere prosjektdeltagelse (ansatt med rolle i prosjekt)");
+        System.out.println("12: Føre timer for en ansatt på et prosjekt");
+        System.out.println("13: Utskrift av info om prosjekt, inkl. liste av deltagere med rolle og timer, og totalt timetall for prosjektet");
 
         String invalidTekst = "Invalid, prøv igjen";
         int valg = -1;
@@ -31,10 +36,10 @@ public class Main {
                 System.out.println(invalidTekst);
             }
             valg = scanner.nextInt();
-            if (valg < 1 || valg > 9) {
+            if (valg < 1 || valg > 13) {
                 System.out.println(invalidTekst);
             }
-        } while (valg < 1 || valg > 9);
+        } while (valg < 1 || valg > 13);
 
         // metodekall her
         switch (valg) {
@@ -130,6 +135,24 @@ public class Main {
                     }
                 }
             }
+            case 10 -> {
+                System.out.println();
+                ProsjektDAO prosjektDAO = new ProsjektDAO();
+                prosjektDAO.lagreNyttProsjekt("test", "Geir", new ArrayList<>());
+            }
+            case 11 -> {
+                //TODO
+                Ansatt testAnsatt = new Ansatt("rmd", "Ronald", "McDonald", "The Burger King", 420.0 , avdelingDAO.finnAvdelingMedId(2), 1);
+                ProsjektDeltagelseDAO prosjektDeltagelseDAO = new ProsjektDeltagelseDAO();
+                prosjektDeltagelseDAO.lagreNyProsjektDeltagelse("Brosteinlegger", testAnsatt, "???");
+            }
+            case 12 -> {
+                //TODO
+            }
+            case 13 -> {
+                //TODO
+            }
+
             default -> {
                 System.out.println("?");
             }

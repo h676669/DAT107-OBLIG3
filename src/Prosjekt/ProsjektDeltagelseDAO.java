@@ -58,6 +58,15 @@ public class ProsjektDeltagelseDAO {
         }
     }
 
+    public void registrerPDAnsatt() {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+
+        }
+    }
+
 
 
 

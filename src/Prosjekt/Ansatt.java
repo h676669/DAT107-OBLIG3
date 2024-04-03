@@ -2,6 +2,7 @@ package Prosjekt;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Ansatt {
     @ManyToOne
     @JoinColumn(name = "avdeling_id")
     private Avdeling avdeling_id;
-    private int prosjektdeltagelse;
+
 
     public Ansatt() {
 
@@ -36,14 +37,14 @@ public class Ansatt {
 
     public Ansatt(String brukernavn, String fornavn,
                   String etternavn, String stilling,
-                  Double manedslonn, Avdeling avdeling, int prosjektdeltagelse) {
+                  Double manedslonn, Avdeling avdeling, List<ProsjektDeltagelse> prosjektdeltagelse) {
         this.etternavn = etternavn;
         this.fornavn = fornavn;
         this.brukernavn = brukernavn;
         this.stilling = stilling;
         this.manedslonn = manedslonn;
         this.avdeling_id = avdeling;
-        this.prosjektdeltagelse = prosjektdeltagelse;
+        this.prosjektDeltagelse = prosjektdeltagelse;
         this.ansettelsesDato = new Date();
     }
 
@@ -124,13 +125,17 @@ public class Ansatt {
         this.avdeling_id.setAvdelingID(avdeling_id);
     }
 
-    public int getProsjektdeltagelseID() {
-        return prosjektdeltagelse;
+    public List<Integer> getProsjektdeltagelseID() {
+        List<Integer> pDList = new ArrayList<>();
+        for (ProsjektDeltagelse p : prosjektDeltagelse) {
+            pDList.add(p.getProsjektdeltagelse_id());
+        }
+        return pDList;
     }
 
-    public void setProsjektdeltagelseID(int prosjektdeltagelse) {
+   /* public void setProsjektdeltagelseID(int prosjektdeltagelse) {
         this.prosjektdeltagelse = prosjektdeltagelse;
-    }
+    }*/
 
     @Override
     public String toString() {
